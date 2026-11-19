@@ -27,6 +27,7 @@ nav:
       - Visão geral: architecture/overview.md
       - Contratos de dados: architecture/data-contracts.md
       - Pipeline: architecture/pipeline.md
+      - Planilha de inspeção: architecture/inspection-sheet.md
   - ADRs:
       - Template: adr/0000-template.md
       - 0001 Monorepo uv: adr/0001-monorepo-python-uv.md
@@ -34,6 +35,7 @@ nav:
       - 0003 Hexagonal: adr/0003-arquitetura-hexagonal.md
       - 0004 Detector Apache: adr/0004-detector-apache.md
       - 0005 CRS: adr/0005-crs.md
+      - 0006 Inspeção única: adr/0006-escopo-inspecao-unica.md
   - Algoritmos:
       - Malha NBR 5101: algorithms/nbr5101-grid.md
   - Bases de dados: datasets.md
