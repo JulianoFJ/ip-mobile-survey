@@ -1,9 +1,10 @@
 """Portas (interfaces) da aplicação. Implementações concretas ficam em `adapters/`."""
 
-from collections.abc import Iterable
+from collections.abc import Iterable, Sequence
 from typing import BinaryIO, Protocol
 from uuid import UUID
 
+from ipsurvey.domain.inspection import InspectionPoint
 from ipsurvey.domain.models import Capture, PoleObservation
 
 
@@ -44,4 +45,12 @@ class PoleRepository(Protocol):
 
     def by_segment(self, segment_id: UUID) -> list[PoleObservation]:
         """Lista as observações de um segmento."""
+        ...
+
+
+class InspectionSheetWriter(Protocol):
+    """Gera a planilha de inspeção (colunas B–AW da aba Simulações, ADR 0006)."""
+
+    def write(self, points: Sequence[InspectionPoint], dest: BinaryIO) -> None:
+        """Escreve uma linha por ponto em `dest`."""
         ...

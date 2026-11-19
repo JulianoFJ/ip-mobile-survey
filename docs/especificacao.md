@@ -44,6 +44,8 @@ Construir uma plataforma que recebe capturas móveis (imagens 360°, trajetória
 
 ### 1.2 Escopo do MVP (v0.x)
 
+> **Atualizado pelo [ADR 0006](adr/0006-escopo-inspecao-unica.md):** inspeção única por município, com um registro por **ponto de IP**. A saída canônica é a planilha de inspeção (colunas B–AW da aba Simulações), confrontada com o cadastro atual.
+
 | Incluído | Fora do MVP (fases seguintes) |
 |---|---|
 | Ingestão de capturas (bases públicas e captura própria) | Medição fotométrica (módulo luxímetro, que tem plano próprio) |

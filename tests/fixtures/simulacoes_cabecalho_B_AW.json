@@ -1,0 +1,197 @@
+{
+ "origem": "Plataforma_IP/app/simulacao_nbr/modelo_planilha_simulacao.json (aba Simulações, B–AW)",
+ "colunas": {
+  "B": {
+   "header": "Id cadastro",
+   "formula": false
+  },
+  "C": {
+   "header": "Simular",
+   "formula": false
+  },
+  "D": {
+   "header": "Automatizada",
+   "formula": false
+  },
+  "E": {
+   "header": "Etiqueta",
+   "formula": false
+  },
+  "F": {
+   "header": "Padrão",
+   "formula": false
+  },
+  "G": {
+   "header": "Logradouro",
+   "formula": false
+  },
+  "H": {
+   "header": "latitude",
+   "formula": false
+  },
+  "I": {
+   "header": "longitude",
+   "formula": false
+  },
+  "J": {
+   "header": "Classificação viária",
+   "formula": false
+  },
+  "K": {
+   "header": "Classificação ciclovia",
+   "formula": false
+  },
+  "L": {
+   "header": "Classificação pedonal",
+   "formula": false
+  },
+  "M": {
+   "header": "Tipo de lâmpada",
+   "formula": false
+  },
+  "N": {
+   "header": "Potencia da lâmpada",
+   "formula": false
+  },
+  "O": {
+   "header": "Reator",
+   "formula": false
+  },
+  "P": {
+   "header": "Potencia 2o nivel",
+   "formula": false
+  },
+  "Q": {
+   "header": "POT TOTAL MALHA",
+   "formula": true
+  },
+  "R": {
+   "header": "Faixas de Rodagem",
+   "formula": false
+  },
+  "S": {
+   "header": "Largura Passeio 1",
+   "formula": false
+  },
+  "T": {
+   "header": "Largura Via 1",
+   "formula": false
+  },
+  "U": {
+   "header": "largura Passeio Central 1",
+   "formula": false
+  },
+  "V": {
+   "header": "largura Passeio Central 2",
+   "formula": false
+  },
+  "W": {
+   "header": "Largura Via 2",
+   "formula": false
+  },
+  "X": {
+   "header": "largura Passeio 2",
+   "formula": false
+  },
+  "Y": {
+   "header": "largura Canteiro Central",
+   "formula": false
+  },
+  "Z": {
+   "header": "largura Ciclovia 1",
+   "formula": false
+  },
+  "AA": {
+   "header": "largura Ciclovia 2",
+   "formula": false
+  },
+  "AB": {
+   "header": "estacionamento 1",
+   "formula": false
+  },
+  "AC": {
+   "header": "estacionamento 2",
+   "formula": false
+  },
+  "AD": {
+   "header": "posteacao",
+   "formula": false
+  },
+  "AE": {
+   "header": "Tipo de estrutura",
+   "formula": false
+  },
+  "AF": {
+   "header": "distancia entre postes",
+   "formula": false
+  },
+  "AG": {
+   "header": "altura da luminaria",
+   "formula": false
+  },
+  "AH": {
+   "header": "qtd de Lampadas IP Princ",
+   "formula": false
+  },
+  "AI": {
+   "header": "distancia Poste a via",
+   "formula": false
+  },
+  "AJ": {
+   "header": "projecao do braço",
+   "formula": false
+  },
+  "AK": {
+   "header": "Pendor",
+   "formula": true
+  },
+  "AL": {
+   "header": "Altura de Instalação",
+   "formula": false
+  },
+  "AM": {
+   "header": "Projeção Vertical",
+   "formula": false
+  },
+  "AN": {
+   "header": "Exclusivo",
+   "formula": false
+  },
+  "AO": {
+   "header": "Quantidade de pontos inspecionados IP Veic",
+   "formula": true
+  },
+  "AP": {
+   "header": "qtd de Lampadas IP 2o nivel",
+   "formula": false
+  },
+  "AQ": {
+   "header": "Tipo de posteação 2o nivel",
+   "formula": false
+  },
+  "AR": {
+   "header": "Distanciamento 2o nivel",
+   "formula": false
+  },
+  "AS": {
+   "header": "Altura da luminaria 2o nivel",
+   "formula": false
+  },
+  "AT": {
+   "header": "Projecao 2o nivel",
+   "formula": false
+  },
+  "AU": {
+   "header": "Distancia poste-via 2o nivel",
+   "formula": false
+  },
+  "AV": {
+   "header": "Quantidade de pontos inspecionados IP Sec",
+   "formula": true
+  },
+  "AW": {
+   "header": "informacoes Adicionais",
+   "formula": false
+  }
+ }
+}

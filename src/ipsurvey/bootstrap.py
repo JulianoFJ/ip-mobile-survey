@@ -2,6 +2,8 @@
 
 from dataclasses import dataclass
 
+from ipsurvey.adapters.export.xlsx import XlsxInspectionSheetWriter
+from ipsurvey.application.use_cases.export_inspection import ExportInspection
 from ipsurvey.logging import configure_logging
 from ipsurvey.settings import Settings, get_settings
 
@@ -11,10 +13,14 @@ class Container:
     """Dependências resolvidas para um processo (API, CLI ou worker)."""
 
     settings: Settings
+    export_inspection: ExportInspection
 
 
 def build_container(settings: Settings | None = None) -> Container:
     """Monta o container e configura logs."""
     s = settings or get_settings()
     configure_logging(s.log_level, json=s.log_json)
-    return Container(settings=s)
+    return Container(
+        settings=s,
+        export_inspection=ExportInspection(XlsxInspectionSheetWriter()),
+    )
