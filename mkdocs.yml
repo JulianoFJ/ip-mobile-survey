@@ -34,4 +34,6 @@ nav:
       - 0003 Hexagonal: adr/0003-arquitetura-hexagonal.md
       - 0004 Detector Apache: adr/0004-detector-apache.md
       - 0005 CRS: adr/0005-crs.md
+  - Algoritmos:
+      - Malha NBR 5101: algorithms/nbr5101-grid.md
   - Bases de dados: datasets.md
