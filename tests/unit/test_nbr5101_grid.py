@@ -4,7 +4,14 @@ import numpy as np
 import pytest
 
 from ipsurvey.domain.errors import DataValidationError
-from ipsurvey.domain.nbr5101 import calculation_grid, grid_size
+from ipsurvey.domain.nbr5101 import (
+    Area,
+    calculation_grid,
+    grid_size,
+    longitudinal_points,
+    sidewalk_grid,
+    sidewalk_transversal_points,
+)
 
 
 @pytest.mark.parametrize(
@@ -52,3 +59,37 @@ def test_meshgrid_shape() -> None:
 def test_invalid_inputs(span: float, width: float, lanes: int) -> None:
     with pytest.raises(DataValidationError):
         calculation_grid(span, width, lanes)
+
+
+# ---------------------------------------------------------------- NBR 5101:2024, 5.1.1.1
+@pytest.mark.parametrize(
+    ("span", "n"), [(5.0, 10), (30.0, 10), (30.01, 11), (33.0, 11), (45.0, 15)]
+)
+def test_longitudinal_rule_30m_threshold(span: float, n: int) -> None:
+    assert longitudinal_points(span) == n
+
+
+# ---------------------------------------------------------------- NBR 5101:2024, 5.1.2.1
+@pytest.mark.parametrize(
+    ("width", "c"), [(1.2, 3), (3.0, 3), (4.5, 3), (4.51, 4), (6.0, 4), (6.01, 5), (9.0, 6)]
+)
+def test_sidewalk_transversal_rule(width: float, c: int) -> None:
+    assert sidewalk_transversal_points(width) == c
+
+
+def test_sidewalk_grid() -> None:
+    g = sidewalk_grid(35.0, 6.0)
+    assert g.area is Area.SIDEWALK
+    assert g.shape == (12, 4)
+    np.testing.assert_allclose(g.y, [0.75, 2.25, 3.75, 5.25])  # d = 1,5 m; extremos a d/2
+
+
+def test_sidewalk_has_no_lane_rows() -> None:
+    with pytest.raises(ValueError, match="pista"):
+        sidewalk_grid(30.0, 3.0).lane_center_rows()
+
+
+@pytest.mark.parametrize(("span", "width"), [(0, 3), (30, 0), (30, -1), (math.nan, 3)])
+def test_sidewalk_invalid_inputs(span: float, width: float) -> None:
+    with pytest.raises(DataValidationError):
+        sidewalk_grid(span, width)
