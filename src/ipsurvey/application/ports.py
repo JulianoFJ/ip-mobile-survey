@@ -4,6 +4,10 @@ from collections.abc import Iterable, Sequence
 from typing import BinaryIO, Protocol
 from uuid import UUID
 
+import numpy as np
+from numpy.typing import NDArray
+
+from ipsurvey.domain.detection import Detection2D
 from ipsurvey.domain.inspection import InspectionPoint
 from ipsurvey.domain.models import Capture, PoleObservation
 
@@ -53,4 +57,12 @@ class InspectionSheetWriter(Protocol):
 
     def write(self, points: Sequence[InspectionPoint], dest: BinaryIO) -> None:
         """Escreve uma linha por ponto em `dest`."""
+        ...
+
+
+class Detector(Protocol):
+    """Detector de estruturas de IP numa imagem plana (RGB, uint8, H × W × 3)."""
+
+    def detect(self, image: NDArray[np.uint8]) -> list[Detection2D]:
+        """Detecta postes, braços e luminárias na imagem."""
         ...
