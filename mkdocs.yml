@@ -38,5 +38,6 @@ nav:
       - 0006 Inspeção única: adr/0006-escopo-inspecao-unica.md
   - Algoritmos:
       - Vistas planas 360°: algorithms/perspective-views.md
+      - Detecção em ângulos: algorithms/angular-detection.md
       - Malha NBR 5101: algorithms/nbr5101-grid.md
   - Bases de dados: datasets.md
