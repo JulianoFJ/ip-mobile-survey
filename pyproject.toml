@@ -1,0 +1,99 @@
+[project]
+name = "ipsurvey"
+version = "0.1.0"
+description = "Plataforma de levantamento móvel de ativos de iluminação pública"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+authors = [{ name = "Houer Consultoria e Concessões" }]
+dependencies = [
+    "pydantic>=2.9",
+    "pydantic-settings>=2.6",
+    "structlog>=24.4",
+    "uuid6>=2024.7",
+    "numpy>=2.1",
+    "typer>=0.15",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+]
+
+[project.scripts]
+ipsurvey = "ipsurvey.cli.main:app"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "hypothesis>=6.120",
+    "import-linter>=2.1",
+    "pre-commit>=4.0",
+    "httpx>=0.28",
+    "pip-licenses>=5.0",
+    "pip-audit>=2.7",
+]
+docs = [
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.27",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ipsurvey"]
+
+# ---------------------------------------------------------------- ruff
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP", "N", "SIM", "RUF", "PL", "PT", "D", "TID"]
+ignore = [
+    "D100", "D104", "D105", "D107",   # docstrings de módulo/pacote/dunder opcionais
+    "PLR2004",                         # números mágicos: comuns em geometria/testes
+    "RUF001", "RUF002", "RUF003",      # caracteres ambíguos (acentos em PT-BR)
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D", "PLR0913"]
+"scripts/**" = ["D"]
+"benchmarks/**" = ["D"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"ultralytics".msg = "AGPL-3.0: proibido sem licença comercial (ver ADR 0004)."
+
+# ---------------------------------------------------------------- mypy
+[tool.mypy]
+python_version = "3.12"
+plugins = ["pydantic.mypy"]
+warn_unused_configs = true
+mypy_path = "src"
+
+[[tool.mypy.overrides]]
+module = ["ipsurvey.domain.*", "ipsurvey.application.*"]
+strict = true
+
+# ---------------------------------------------------------------- pytest
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "integration: requer serviços reais (PostGIS/MinIO via testcontainers)",
+    "e2e: pipeline completo no mini-dataset",
+]
+
+[tool.coverage.run]
+source = ["src/ipsurvey"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

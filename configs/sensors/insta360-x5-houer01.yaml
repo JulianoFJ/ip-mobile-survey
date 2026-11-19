@@ -1,0 +1,11 @@
+id: insta360-x5-houer01
+camera:
+  model: equirectangular
+  width: 7680
+  height: 3840
+  rolling_shutter: true
+gnss:
+  type: rtk
+  antenna_offset_m: {x: 0.00, y: 0.00, z: 0.12}   # antena → centro óptico
+lidar: null
+time_sync: gnss_pps   # gnss_pps | event_marker | manual_clock
