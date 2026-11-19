@@ -1,0 +1,15 @@
+name: Experimento
+description: Hipótese científica a testar numa branch exp/
+labels: ["tipo:experimento"]
+body:
+  - type: textarea
+    id: hypothesis
+    attributes: { label: Hipótese }
+    validations: { required: true }
+  - type: textarea
+    id: metric
+    attributes: { label: Métrica e dataset, description: "Como será medido e contra qual verdade de campo" }
+    validations: { required: true }
+  - type: textarea
+    id: result
+    attributes: { label: Resultado e conclusão, description: "Preencher ao final, mesmo se a branch não for mergeada" }

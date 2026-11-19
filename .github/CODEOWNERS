@@ -1,0 +1,5 @@
+# Ajustar para os times reais da organização Houer no GitHub.
+*                         @houer/ip-mobile-survey-maintainers
+/src/ipsurvey/domain/     @houer/algoritmos
+/migrations/              @houer/backend
+/docs/adr/                @houer/ip-mobile-survey-maintainers

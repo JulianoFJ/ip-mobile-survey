@@ -1,0 +1,14 @@
+name: Bug
+description: Algo não funciona como deveria
+labels: ["tipo:bug"]
+body:
+  - type: textarea
+    id: what
+    attributes: { label: O que aconteceu, description: "Comportamento observado vs. esperado" }
+    validations: { required: true }
+  - type: textarea
+    id: repro
+    attributes: { label: Como reproduzir, description: "run_id, campanha, segmento, comando" }
+  - type: input
+    id: version
+    attributes: { label: pipeline_version }

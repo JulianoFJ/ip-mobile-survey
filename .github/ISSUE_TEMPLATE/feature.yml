@@ -1,0 +1,16 @@
+name: Funcionalidade
+description: Nova funcionalidade dentro do escopo do MVP (§1.2)
+labels: ["tipo:feature"]
+body:
+  - type: textarea
+    id: goal
+    attributes: { label: Objetivo }
+    validations: { required: true }
+  - type: textarea
+    id: dod
+    attributes: { label: Critério de pronto }
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      options: [dominio, pipeline, api, web, infra, docs]

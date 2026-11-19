@@ -1,0 +1,37 @@
+site_name: ipsurvey
+docs_dir: docs
+theme:
+  name: material
+  language: pt-BR
+  features: [navigation.sections, content.code.copy]
+markdown_extensions:
+  - tables
+  - admonition
+  - toc: { permalink: true }
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options: { docstring_style: google }
+nav:
+  - Início: index.md
+  - Especificação: especificacao.md
+  - Arquitetura:
+      - Visão geral: architecture/overview.md
+      - Contratos de dados: architecture/data-contracts.md
+      - Pipeline: architecture/pipeline.md
+  - ADRs:
+      - Template: adr/0000-template.md
+      - 0001 Monorepo uv: adr/0001-monorepo-python-uv.md
+      - 0002 Prefect: adr/0002-prefect-orquestracao.md
+      - 0003 Hexagonal: adr/0003-arquitetura-hexagonal.md
+      - 0004 Detector Apache: adr/0004-detector-apache.md
+      - 0005 CRS: adr/0005-crs.md
+  - Bases de dados: datasets.md
