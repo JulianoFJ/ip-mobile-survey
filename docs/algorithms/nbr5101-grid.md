@@ -23,6 +23,24 @@ faixas, e 10 a 14 colunas para vãos de 19 a 40 m. Os dois módulos (estrutural 
 precisam usar a **mesma** malha. O Uo é Emin/Emed, e o mínimo depende de onde se amostra: uma malha
 mais densa encontra mínimos que a malha da norma não vê.
 
+### Conferência com a NBR 5101 (19/11/2026)
+
+O texto da NBR 5101:2024 não está disponível publicamente: é vendido pela ABNT e não há cópia no
+acervo da Houer. A conferência usou as figuras do rascunho da revisão, apresentadas pela comissão
+de estudo no Workshop Abilumi 2019 (Drive do Time de IP, `16. Eventos/…/Palestra 7-NBR5101`,
+capítulo 6, "Malha de projeto e verificação"):
+
+| Item | Rascunho NBR 5101 (Fig. 1 e 2) | Este módulo |
+|---|---|---|
+| Espaçamento longitudinal | D = S/N | ✔ igual |
+| Espaçamento transversal | d = L/3 por faixa (3 pontos) | ✔ igual |
+| Posição | D/2 e d/2 das bordas (centro da célula) | ✔ igual |
+| Calçada | Malha própria, 3 pontos na largura | ✔ calcular com `lanes=1` |
+| Regra de N (mín. 10, D ≤ 3 m) | Não aparece nas figuras | Vem da EN 13201-3 e da validação contra o DIALux |
+
+**Ainda falta:** confirmar a regra de N no texto final de 2024. Quando a Houer tiver a norma,
+conferir a seção de malha de cálculo e atualizar esta página.
+
 ## Testes
 
 - Unitários: casos de referência do DIALux, ruído de ponto flutuante, entradas inválidas.
@@ -33,5 +51,4 @@ mais densa encontra mínimos que a malha da norma não vê.
 
 - Malha retangular: vias curvas devem ser retificadas no eixo antes de usar.
 - Passeio: calcular como área separada, com `lanes=1`.
-- Pendente: confirmar no texto da NBR 5101:2024 se há diferença em relação à EN 13201-3 (por
-  exemplo, no número de pontos transversais para faixas largas).
+- Regra de N ainda não conferida no texto final da NBR 5101:2024 (ver acima).
