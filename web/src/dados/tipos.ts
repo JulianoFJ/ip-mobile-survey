@@ -85,6 +85,19 @@ export interface ViaMalha {
   maoUnica: boolean | null;
   /** Postes do cadastro atribuídos a essa via, e o que o cadastro diz deles. */
   postesCadastroNaVia: number;
+  /** Corte transversal medido na segmentação do chão (distâncias laterais ao eixo do carro). */
+  corte: {
+    meioFioEsquerdaM: number | null;
+    meioFioDireitaM: number | null;
+    passeioEsquerdaM: number | null;
+    passeioDireitaM: number | null;
+    canteiroM: number | null;
+    canteiroLado: "esquerda" | "direita" | null;
+    pista2M: number | null;
+    fatias: number;
+    fatiasTotal: number;
+    anisotropiaEixo: number | null;
+  } | null;
   tecnologia: string | null;
   potenciaW: number | null;
   /** Distância lateral entre os alinhamentos de postes (limite superior de passeio + via + passeio). */
@@ -104,6 +117,8 @@ export interface Captura {
   rumo: number;
   /** Rumo de deslocamento (da foto anterior para a seguinte), se conhecido. */
   rumoDeslocamento: number | null;
+  /** Para que lado do panorama está a frente do veículo, e como isso foi decidido. */
+  frente: { deg: number; fonte: string };
   data: string;
   camera: string;
   autor: string;

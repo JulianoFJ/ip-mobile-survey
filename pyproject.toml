@@ -78,6 +78,7 @@ convention = "google"
 "scripts/**" = ["D", "PLC0415"]
 # Extra opcional `vision`: torch/transformers/PIL só são importados ao usar o detector.
 "src/ipsurvey/adapters/detection/owlv2.py" = ["PLC0415"]
+"src/ipsurvey/adapters/segmentation/oneformer.py" = ["PLC0415"]
 "benchmarks/**" = ["D"]
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]

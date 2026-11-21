@@ -8,12 +8,14 @@ import { Icone } from "@/ui/Icone";
 import { cn } from "@/ui/lib/cn";
 
 /** Colunas da planilha de simulação mostradas na tabela, na ordem de leitura. */
-export const COLUNAS_TABELA = ["R", "T", "S", "Y", "AD", "AF", "AL", "AJ", "AH", "AI"] as const;
+export const COLUNAS_TABELA = ["R", "T", "W", "Y", "S", "X", "AD", "AF", "AL", "AJ", "AH", "AI"] as const;
 
 const CURTO: Record<string, string> = {
   R: "Faixas",
-  T: "Largura via",
-  S: "Passeio",
+  T: "Via 1",
+  W: "Via 2",
+  S: "Passeio 1",
+  X: "Passeio 2",
   Y: "Canteiro",
   AD: "Posteação",
   AF: "Vão",
@@ -80,9 +82,10 @@ export function ResumoMedidas({ capturas }: { capturas: Captura[] }) {
     { col: "AJ", rotulo: "Projeção do braço", un: "m" },
     { col: "R", rotulo: "Faixas de rodagem", un: "" },
     { col: "T", rotulo: "Largura da via", un: "m" },
+    { col: "S", rotulo: "Passeio (lado 1)", un: "m" },
   ];
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-7">
       {itens.map((it) => {
         const fs = capturas.map((c) => campo(c, it.col)).filter((f): f is CampoVia => !!f && typeof f.valor === "number");
         const med = mediana(fs.map((f) => f.valor as number));

@@ -37,9 +37,11 @@ nav:
       - 0005 CRS: adr/0005-crs.md
       - 0006 Inspeção única: adr/0006-escopo-inspecao-unica.md
       - 0007 Web na pilha do Ignis: adr/0007-web-pilha-do-ignis.md
+      - 0008 Segmentação OneFormer: adr/0008-segmentacao-chao-oneformer.md
   - Algoritmos:
       - Vistas planas 360°: algorithms/perspective-views.md
       - Detecção em ângulos: algorithms/angular-detection.md
       - Malha NBR 5101: algorithms/nbr5101-grid.md
       - Fusão de fontes: algorithms/fusao-fontes.md
+      - Larguras da via: algorithms/larguras-da-via.md
   - Bases de dados: datasets.md

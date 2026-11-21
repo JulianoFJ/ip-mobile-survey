@@ -85,3 +85,11 @@ class RoadNetworkSource(Protocol):
     def ways_around(self, points: Sequence[tuple[float, float]], radius_m: float) -> list[RoadWay]:
         """Vias a até `radius_m` de qualquer um dos pontos (lat, lon)."""
         ...
+
+
+class GroundSegmenter(Protocol):
+    """Segmentação do chão numa imagem plana (RGB, uint8, H × W × 3)."""
+
+    def segment(self, image: NDArray[np.uint8]) -> NDArray[np.uint8]:
+        """Rótulos `GroundClass` por pixel (H × W, uint8)."""
+        ...
