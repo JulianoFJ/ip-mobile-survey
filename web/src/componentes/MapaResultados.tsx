@@ -1,12 +1,15 @@
 "use client";
 
 import type { FeatureCollection } from "geojson";
-import type { StyleSpecification } from "maplibre-gl";
+import { setWorkerUrl, type StyleSpecification } from "maplibre-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Map, { Layer, NavigationControl, ScaleControl, Source, type MapLayerMouseEvent, type MapRef } from "react-map-gl/maplibre";
 import type { Captura, PosteCadastro, Revisao } from "@/dados/tipos";
 import { Icone } from "@/ui/Icone";
 import { cn } from "@/ui/lib/cn";
+
+// MapLibre 6: o worker é servido de public/maplibre/ (scripts/copiar-worker-maplibre.mjs).
+setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
 
 /** Mesmos fundos do MapView do Ignis (packages/ui/src/mapa/fundos.ts), sem chave. */
 const CARTO = "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";

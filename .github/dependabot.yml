@@ -9,3 +9,11 @@ updates:
   - package-ecosystem: docker
     directory: /infra
     schedule: { interval: monthly }
+  # Front (web/): mesmas versões do Ignis (ADR 0007). Atualizações de versão vêm agrupadas
+  # e mensais, para subir junto com o portal; alertas de segurança continuam imediatos.
+  - package-ecosystem: npm
+    directory: /web
+    schedule: { interval: monthly }
+    groups:
+      web:
+        patterns: ["*"]
