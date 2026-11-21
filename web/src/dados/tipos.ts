@@ -41,7 +41,7 @@ export interface Deteccao {
 export type EstadoCampo = "estimado" | "pendente";
 
 /** De onde veio um valor. */
-export type Fonte = "imagem" | "cadastro" | "mapa";
+export type Fonte = "imagem" | "cadastro" | "mapa" | "revisao";
 
 export interface Candidato {
   fonte: Fonte;
@@ -172,6 +172,7 @@ export const FONTES: Record<Fonte, { rotulo: string; icone: string; tom: "marca"
   imagem: { rotulo: "Imagem 360°", icone: "panorama_photosphere", tom: "marca" },
   cadastro: { rotulo: "Cadastro BDGD", icone: "table_view", tom: "sucesso" },
   mapa: { rotulo: "Mapa (OSM)", icone: "map", tom: "neutro" },
+  revisao: { rotulo: "Revisão", icone: "edit_square", tom: "marca" },
 };
 
 export const STATUS: Record<StatusCampanha, { rotulo: string; tom: "neutro" | "marca" | "atencao" | "sucesso"; icone: string }> = {

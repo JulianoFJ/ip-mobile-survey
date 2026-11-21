@@ -173,7 +173,7 @@ function TelaRevisao({ campanha }: { campanha: Campanha }) {
             </div>
             {painel === "via" && (
               <div className="min-h-0 flex-1 overflow-y-auto p-3">
-                <ViaMalha captura={captura} revisoes={revisoes} />
+                <ViaMalha campanhaId={campanha.id} captura={captura} revisoes={revisoes} />
               </div>
             )}
             <ul className={cn("min-h-0 flex-1 divide-y divide-borda overflow-y-auto", painel !== "deteccoes" && "hidden")}>

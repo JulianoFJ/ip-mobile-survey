@@ -71,6 +71,10 @@ def bbox(lat: float, lon: float, r: float) -> tuple[float, float, float, float]:
     return lat - dlat, lon - dlon, lat + dlat, lon + dlon
 
 
+def r2(x: float | None) -> float | None:
+    return None if x is None else round(x, 2)
+
+
 def campo_json(f: FusedField) -> dict:
     return {
         "coluna": f.column,
@@ -274,13 +278,13 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
                     if rua
                     else None,
                     "corte": {
-                        "meioFioEsquerdaM": corte.curb_left_m,
-                        "meioFioDireitaM": corte.curb_right_m,
-                        "passeioEsquerdaM": corte.sidewalk_left_m,
-                        "passeioDireitaM": corte.sidewalk_right_m,
-                        "canteiroM": corte.median_m,
+                        "meioFioEsquerdaM": r2(corte.curb_left_m),
+                        "meioFioDireitaM": r2(corte.curb_right_m),
+                        "passeioEsquerdaM": r2(corte.sidewalk_left_m),
+                        "passeioDireitaM": r2(corte.sidewalk_right_m),
+                        "canteiroM": r2(corte.median_m),
                         "canteiroLado": corte.median_side,
-                        "pista2M": corte.road2_width_m,
+                        "pista2M": r2(corte.road2_width_m),
                         "fatias": corte.rows_used,
                         "fatiasTotal": corte.rows_total,
                         "anisotropiaEixo": o.get("anisotropia"),

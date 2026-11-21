@@ -23,12 +23,12 @@ Para verificar: `pnpm typecheck` e `pnpm test`.
 | `/inspecao` | Lista de inspeções e as etapas do módulo |
 | `/inspecao/nova` | Assistente: identificação, equipamento (altura da câmera), envio dos arquivos com conferência no navegador (formato 2:1 e GPS no EXIF) e resumo do processamento |
 | `/inspecao/[id]` | Painel: indicadores, mapa com capturas e postes estimados (Carto e Esri), filtro por cidade, prévia da captura |
-| `/inspecao/[id]/revisao` | Panorama com as caixas; confirmar ou rejeitar cada detecção, com atalhos de teclado |
+| `/inspecao/[id]/revisao` | Panorama com as caixas; confirmar ou rejeitar cada detecção (atalhos de teclado); aba **Via e malha** com a planta, onde se corrigem as larguras arrastando o meio-fio |
 | `/inspecao/[id]/relatorio` | Relatório para imprimir ou salvar em PDF, e os postes em CSV |
 
 ## Ainda não ligado
 
 - O envio ao servidor e o processamento dependem da API de ingestão.
-- As revisões ficam no navegador; o botão "Exportar revisões" baixa um JSON.
+- As revisões (decisões e larguras corrigidas) ficam no navegador; o botão "Exportar revisões" baixa um JSON. As larguras corrigidas são os rótulos para retreinar o segmentador (ADR 0008).
 - A planilha de inspeção `.xlsx` já existe no Python (`ipsurvey exportar-planilha`), mas ainda não é servida.
 - O confronto com o cadastro depende da issue #14.
