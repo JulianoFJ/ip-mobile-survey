@@ -7,6 +7,7 @@ from uuid import UUID
 import numpy as np
 from numpy.typing import NDArray
 
+from ipsurvey.domain.cadastre import CadastrePoint, RoadWay
 from ipsurvey.domain.detection import Detection2D
 from ipsurvey.domain.inspection import InspectionPoint
 from ipsurvey.domain.models import Capture, PoleObservation
@@ -65,4 +66,22 @@ class Detector(Protocol):
 
     def detect(self, image: NDArray[np.uint8]) -> list[Detection2D]:
         """Detecta postes, braços e luminárias na imagem."""
+        ...
+
+
+class CadastreSource(Protocol):
+    """Cadastro de IP ponto a ponto de um município (municipal ou BDGD)."""
+
+    def points_in_bbox(
+        self, ibge: str, south: float, west: float, north: float, east: float
+    ) -> list[CadastrePoint]:
+        """Pontos do município `ibge` dentro do retângulo (graus)."""
+        ...
+
+
+class RoadNetworkSource(Protocol):
+    """Malha viária (eixos) de um mapa."""
+
+    def ways_around(self, points: Sequence[tuple[float, float]], radius_m: float) -> list[RoadWay]:
+        """Vias a até `radius_m` de qualquer um dos pontos (lat, lon)."""
         ...

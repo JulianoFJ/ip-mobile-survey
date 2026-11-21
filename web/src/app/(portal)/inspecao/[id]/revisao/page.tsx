@@ -31,7 +31,7 @@ function TelaRevisao({ campanha }: { campanha: Campanha }) {
   const { mapa: revisoes, decidir, exportar } = useRevisoes(campanha.id);
   const [visiveis, setVisiveis] = useState<Record<Classe, boolean>>({ poste: true, braco: true, luminaria: true });
   const [selDet, setSelDet] = useState<string | null>(null);
-  const [painel, setPainel] = useState<"deteccoes" | "via">("deteccoes");
+  const [painel, setPainel] = useState<"deteccoes" | "via">(busca.get("painel") === "via" ? "via" : "deteccoes");
 
   const idCaptura = busca.get("captura") ?? campanha.capturas[0]?.id ?? "";
   const idx = Math.max(0, campanha.capturas.findIndex((c) => c.id === idCaptura));

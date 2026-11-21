@@ -6,6 +6,7 @@ import { CabecalhoCampanha, ComCampanha } from "@/componentes/Campanha";
 import { contarPorClasse, fmt, histogramaAlturas, mediana } from "@/dados/geometria";
 import { useRevisoes } from "@/dados/revisao";
 import { CLASSES, type Campanha, type Classe } from "@/dados/tipos";
+import { TabelaVias } from "@/componentes/TabelaVias";
 import { Botao } from "@/ui/Botao";
 
 export default function PaginaRelatorio() {
@@ -135,7 +136,16 @@ function Relatorio({ campanha }: { campanha: Campanha }) {
           </table>
         </Secao>
 
-        <Secao n={4} titulo="Método">
+        <Secao n={4} titulo="Medidas de via e malha para a simulação" quebra>
+          <p className="mb-3 text-[0.86rem] text-texto-fraco">
+            Campos de levantamento da planilha de simulação, por captura. Cada valor vem da fonte que mede melhor o campo: a imagem 360° para altura e
+            braço, o cadastro {campanha.fontesCadastro ? `(${campanha.fontesCadastro})` : ""} para vão, posteação e lâmpadas por ponto, e o mapa
+            (OpenStreetMap) para faixas e logradouro. Larguras ainda pendentes.
+          </p>
+          <TabelaVias capturas={campanha.capturas} impressao />
+        </Secao>
+
+        <Secao n={5} titulo="Método">
           <ul className="list-disc space-y-1.5 pl-5 text-[0.88rem]">
             <li>Cada panorama é fatiado em 16 vistas planas (8 direções, no horizonte e inclinadas 35° para cima), para o detector não sofrer com a distorção da imagem 360°.</li>
             <li>
@@ -148,19 +158,27 @@ function Relatorio({ campanha }: { campanha: Campanha }) {
               costumam ser placas e hastes.
             </li>
             <li>A posição no mapa combina a posição da foto, o rumo da câmera, o ângulo da detecção e a distância estimada.</li>
+            <li>
+              Vão e posteação pelo cadastro: cada poste é projetado no eixo da via do mapa; a posição ao longo do eixo dá os vãos de cada lado
+              (mediana) e o lado dá a posteação.
+            </li>
           </ul>
         </Secao>
 
-        <Secao n={5} titulo="Limitações">
+        <Secao n={6} titulo="Limitações">
           <ul className="list-disc space-y-1.5 pl-5 text-[0.88rem]">
             <li>A estimativa é de um quadro só. Erra em rua com rampa, com meio-fio alto ou quando o pé do poste está atrás de um veículo. A triangulação entre quadros consecutivos vai substituí-la.</li>
             <li>A posição herda o erro do GPS da câmera, de alguns metros. Com GNSS RTK, cai para decímetros.</li>
             <li>Braços e luminárias pequenas e distantes passam despercebidos com frequência. O detector ainda não foi treinado com postes brasileiros.</li>
-            <li>Ainda não há confronto com o cadastro do município. Essa etapa entra com a importação do cadastro.</li>
+            <li>
+              O casamento poste a poste entre a foto e o cadastro ainda não supera o acaso: os erros somados (GPS da câmera, estimativa de um quadro
+              e coordenada esquemática da BDGD) passam do espaçamento entre postes. A comparação é feita por via, não por poste.
+            </li>
+            <li>Larguras de pista, passeio e canteiro ainda não são medidas: o mapa não as tem, e a medição por satélite e imagem é a próxima etapa.</li>
           </ul>
         </Secao>
 
-        <Secao n={6} titulo="Postes levantados" quebra>
+        <Secao n={7} titulo="Postes levantados" quebra>
           <table className="w-full text-[0.78rem]">
             <thead>
               <tr className="border-b border-borda-forte text-left text-texto-fraco">

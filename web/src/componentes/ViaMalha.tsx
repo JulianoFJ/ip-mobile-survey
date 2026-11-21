@@ -1,7 +1,7 @@
 "use client";
 
 import { fmt } from "@/dados/geometria";
-import type { Captura, CampoVia, Revisao } from "@/dados/tipos";
+import { FONTES, type Captura, type CampoVia, type Revisao } from "@/dados/tipos";
 import { Balao } from "@/ui/Ajuda";
 import { Icone } from "@/ui/Icone";
 import { cn } from "@/ui/lib/cn";
@@ -17,13 +17,29 @@ const GRUPOS: { titulo: string; icone: string; colunas: string[] }[] = [
 export function ViaMalha({ captura, revisoes }: { captura: Captura; revisoes: Record<string, Revisao> }) {
   const porColuna = new Map(captura.via.campos.map((c) => [c.coluna, c]));
   const estimados = captura.via.campos.filter((c) => c.estado === "estimado").length;
+  const divergentes = captura.via.campos.filter((c) => c.divergente).length;
+  const v = captura.via;
   return (
     <div className="space-y-4">
+      <div className="rounded-pi border border-borda p-3 text-[0.84rem]">
+        <p className="font-semibold text-navy">{v.logradouro ?? "Via sem nome no mapa"}</p>
+        <p className="mt-0.5 text-[0.78rem] text-texto-fraco">
+          {[
+            v.classeOsm && `classe OSM ${v.classeOsm}`,
+            v.maoUnica != null && (v.maoUnica ? "mão única" : "mão dupla"),
+            v.postesCadastroNaVia ? `${v.postesCadastroNaVia} postes da BDGD na via` : "sem cadastro nesta via",
+            v.tecnologia && `${v.tecnologia}${v.potenciaW ? ` ${v.potenciaW} W` : ""} (moda do cadastro)`,
+          ]
+            .filter(Boolean)
+            .join(" · ")}
+        </p>
+      </div>
       <PlantaVia captura={captura} revisoes={revisoes} />
       <p className="text-[0.8rem] text-texto-fraco">
-        {estimados} de {captura.via.campos.length} campos de levantamento estimados neste panorama. Passe o mouse num campo para ver como foi
-        obtido.
+        {estimados} de {captura.via.campos.length} campos estimados
+        {divergentes > 0 && <>, {divergentes} com fontes divergentes</>}. Passe o mouse num campo para ver a fonte e os outros valores.
       </p>
+      <LegendaFontes />
       {GRUPOS.map((g) => (
         <section key={g.titulo}>
           <h3 className="rotulo-secao mb-1 flex items-center gap-1.5">
@@ -43,9 +59,24 @@ export function ViaMalha({ captura, revisoes }: { captura: Captura; revisoes: Re
 
 function LinhaCampo({ campo }: { campo: CampoVia }) {
   const ok = campo.estado === "estimado";
+  const fonte = campo.fonte ? FONTES[campo.fonte] : null;
+  const balao = (
+    <div className="max-w-xs space-y-1">
+      {campo.candidatos.length ? (
+        campo.candidatos.map((c, i) => (
+          <p key={c.fonte}>
+            <strong>{FONTES[c.fonte].rotulo}{i === 0 ? " (usada)" : ""}:</strong> {String(c.valor)}
+            {campo.unidade && typeof c.valor === "number" ? ` ${campo.unidade}` : ""} — {c.detalhe}
+          </p>
+        ))
+      ) : (
+        <p>{campo.metodo}</p>
+      )}
+    </div>
+  );
   return (
     <li>
-      <Balao conteudo={campo.metodo} lado="left">
+      <Balao conteudo={balao} lado="left">
         <div tabIndex={0} className="flex items-center gap-2 px-2.5 py-1.5 text-[0.84rem] outline-none focus-visible:bg-superficie-alt">
           <span className="w-7 shrink-0 rounded bg-superficie-alt text-center font-mono text-[0.7rem] text-texto-fraco">{campo.coluna}</span>
           <span className="min-w-0 flex-1 truncate text-texto">{campo.rotulo}</span>
@@ -57,10 +88,27 @@ function LinhaCampo({ campo }: { campo: CampoVia }) {
           ) : (
             <span className="text-[0.75rem] text-texto-suave">pendente</span>
           )}
-          <Icone nome={ok ? "check_circle" : "schedule"} tamanho={16} cheio={ok} className={ok ? "text-sucesso" : "text-texto-suave"} />
+          {campo.divergente && <Icone nome="warning" tamanho={16} cheio className="text-atencao" rotulo="Fontes divergentes" />}
+          {fonte ? (
+            <Icone nome={fonte.icone} tamanho={16} className={campo.fonte === "cadastro" ? "text-sucesso" : campo.fonte === "mapa" ? "text-navy" : "text-acao-texto"} rotulo={fonte.rotulo} />
+          ) : (
+            <Icone nome="schedule" tamanho={16} className="text-texto-suave" />
+          )}
         </div>
       </Balao>
     </li>
+  );
+}
+
+function LegendaFontes() {
+  return (
+    <p className="flex flex-wrap gap-x-3 gap-y-1 text-[0.72rem] text-texto-fraco">
+      <span className="flex items-center gap-1"><Icone nome={FONTES.imagem.icone} tamanho={14} className="text-acao-texto" /> imagem 360°</span>
+      <span className="flex items-center gap-1"><Icone nome={FONTES.cadastro.icone} tamanho={14} className="text-sucesso" /> cadastro BDGD</span>
+      <span className="flex items-center gap-1"><Icone nome={FONTES.mapa.icone} tamanho={14} className="text-navy" /> mapa OSM</span>
+      <span className="flex items-center gap-1"><Icone nome="warning" tamanho={14} cheio className="text-atencao" /> fontes divergem</span>
+      <span className="flex items-center gap-1"><Icone nome="schedule" tamanho={14} /> pendente</span>
+    </p>
   );
 }
 

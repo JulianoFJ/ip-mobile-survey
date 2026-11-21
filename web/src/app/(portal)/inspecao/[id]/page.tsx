@@ -10,6 +10,7 @@ import { contarPorClasse, fmt, mediana } from "@/dados/geometria";
 import { useRevisoes } from "@/dados/revisao";
 import { CLASSES, type Campanha, type Classe } from "@/dados/tipos";
 import { Botao } from "@/ui/Botao";
+import { ResumoMedidas, TabelaVias, ValorCampo } from "@/componentes/TabelaVias";
 import { CartaoKpi } from "@/ui/CartaoKpi";
 import { Icone } from "@/ui/Icone";
 import { cn } from "@/ui/lib/cn";
@@ -89,7 +90,7 @@ function Painel({ campanha }: { campanha: Campanha }) {
         </div>
 
         <div className="grid gap-4 xl:grid-cols-[1fr_360px]">
-          <MapaResultados capturas={capturas} revisoes={revisoes} selecionada={selecionada} aoSelecionar={setSelecionada} altura="min(68vh, 640px)" />
+          <MapaResultados capturas={capturas} revisoes={revisoes} cadastro={campanha.cadastro} selecionada={selecionada} aoSelecionar={setSelecionada} altura="min(68vh, 640px)" />
           <aside className="cartao flex max-h-[min(68vh,640px)] min-h-[320px] flex-col overflow-hidden">
             {sel ? (
               <div className="flex min-h-0 flex-1 flex-col">
@@ -106,6 +107,28 @@ function Painel({ campanha }: { campanha: Campanha }) {
                   </p>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={urlPublica(sel.imagem)} alt={`Panorama de ${sel.cidade}`} className="mt-3 aspect-[2/1] w-full rounded-pi object-cover" />
+                  <div className="mt-3 rounded-pi border border-borda p-2.5">
+                    <p className="text-[0.8rem] font-semibold text-navy">{sel.via.logradouro ?? "Via sem nome no mapa"}</p>
+                    <dl className="mt-1.5 grid grid-cols-2 gap-x-3 gap-y-1 text-[0.8rem]">
+                      {(
+                        [
+                          ["R", "Faixas"],
+                          ["AD", "Posteação"],
+                          ["AF", "Vão"],
+                          ["AL", "Alt. instalação"],
+                          ["AJ", "Braço"],
+                          ["AH", "Lâmp./ponto"],
+                        ] as const
+                      ).map(([col, rot]) => (
+                        <div key={col} className="contents">
+                          <dt className="text-texto-fraco">{rot}</dt>
+                          <dd className="text-right">
+                            <ValorCampo f={sel.via.campos.find((f) => f.coluna === col)} compacto />
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
                   <ul className="mt-3 space-y-1.5 text-[0.88rem]">
                     {(Object.keys(CLASSES) as Classe[]).map((k) => (
                       <li key={k} className="flex items-center justify-between">
@@ -160,6 +183,27 @@ function Painel({ campanha }: { campanha: Campanha }) {
             )}
           </aside>
         </div>
+
+        <section aria-labelledby="t-medidas" className="space-y-3 pt-2">
+          <div className="flex flex-wrap items-end justify-between gap-2">
+            <div>
+              <h2 id="t-medidas" className="text-[1.1rem] font-semibold text-navy">Medidas de via e malha</h2>
+              <p className="text-[0.84rem] text-texto-fraco">
+                Campos de levantamento da planilha de simulação, por captura. Cada valor vem da fonte que mede melhor o campo: imagem 360°, cadastro
+                BDGD ou mapa OSM. Passe o mouse para ver as outras fontes.
+              </p>
+            </div>
+          </div>
+          <ResumoMedidas capturas={capturas} />
+          <TabelaVias
+            capturas={capturas}
+            base={base}
+            aoSelecionar={(id) => {
+              setSelecionada(id);
+              document.getElementById("conteudo")?.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          />
+        </section>
       </div>
     </>
   );
