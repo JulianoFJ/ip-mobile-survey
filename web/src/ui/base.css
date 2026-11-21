@@ -1,0 +1,49 @@
+/* Cópia de @apphouer/ui (HouerIgnis, packages/ui). Na integração ao Ignis, importar do pacote. */
+/* Base do design system: tokens, ícones Material e estilos globais. A fonte Inter vem do
+   next/font no site e do @fontsource no Storybook (`.storybook/preview.ts`). */
+@import "material-symbols/rounded.css";
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body { height: 100%; }
+  body {
+    @apply bg-fundo text-texto font-sans antialiased;
+    font-feature-settings: "cv11", "ss01", "tnum" 0;
+  }
+  /* Títulos na fonte de display (Sora) — identidade Ignis; o corpo segue em Inter. */
+  h1, h2, h3 { @apply font-display; }
+  /* Foco visível igual em tudo: anel da marca, só para teclado. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--pi-teal-rgb));
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection { background: rgb(var(--pi-teal-rgb) / .25); }
+  .num { font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .ms {
+    font-family: "Material Symbols Rounded";
+    font-weight: normal; font-style: normal; line-height: 1;
+    display: inline-block; white-space: nowrap; letter-spacing: normal; text-transform: none;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    -webkit-font-smoothing: antialiased; user-select: none;
+  }
+  .ms-cheio { font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24; }
+  .rotulo-secao { @apply text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-texto-fraco; }
+  .cartao { @apply rounded-card border border-borda bg-superficie shadow-card; }
+}
+
+/* MapLibre: atribuição discreta e no tema. */
+.maplibregl-ctrl-attrib { font-size: 10px !important; background: rgb(var(--pi-superficie-rgb) / .8) !important; color: rgb(var(--pi-texto-fraco-rgb)) !important; }
+.maplibregl-ctrl-attrib a { color: inherit !important; }
+.maplibregl-ctrl-attrib-button { filter: var(--pi-filtro-icone, none); }
+[data-tema="escuro"] { --pi-filtro-icone: invert(1); }

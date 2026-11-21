@@ -36,6 +36,7 @@ nav:
       - 0004 Detector Apache: adr/0004-detector-apache.md
       - 0005 CRS: adr/0005-crs.md
       - 0006 Inspeção única: adr/0006-escopo-inspecao-unica.md
+      - 0007 Web na pilha do Ignis: adr/0007-web-pilha-do-ignis.md
   - Algoritmos:
       - Vistas planas 360°: algorithms/perspective-views.md
       - Detecção em ângulos: algorithms/angular-detection.md
