@@ -100,8 +100,9 @@ def test_casamento_guloso_sem_repeticao() -> None:
 
 
 # ---------------------------------------------------------------- fusão
+from ipsurvey.domain.extraction.cross_section import CrossSection  # noqa: E402
 from ipsurvey.domain.extraction.fusion import fuse  # noqa: E402
-from ipsurvey.domain.extraction.road import RoadEstimate  # noqa: E402
+from ipsurvey.domain.extraction.road import PolePlan, RoadEstimate, Side  # noqa: E402
 
 
 def _img(**kw: object) -> RoadEstimate:
@@ -146,3 +147,29 @@ def test_fusao_sem_cadastro_usa_imagem_e_marca_pendente() -> None:
     assert _campo(campos, "AF").value is None
     assert _campo(campos, "T").value is None
     assert [c.column for c in campos][:2] == ["R", "S"]
+
+
+def test_fusao_com_corte_transversal_e_recuo_do_poste() -> None:
+    sec = CrossSection(
+        road_width_m=7.0,
+        curb_left_m=2.0,
+        curb_right_m=5.0,
+        sidewalk_left_m=2.5,
+        sidewalk_right_m=3.0,
+        median_m=None,
+        median_side=None,
+        road2_width_m=None,
+        rows_used=150,
+        rows_total=160,
+    )
+    poste = PolePlan(
+        index=0, x_m=5.6, y_m=8.0, height_m=9.0, height_is_lower_bound=False, side=Side.RIGHT
+    )
+    campos = fuse(_img(poles=(poste,)), None, None, sec, axis_anisotropy=5.0)
+    assert _campo(campos, "T").value == 7.0
+    assert (_campo(campos, "S").value, _campo(campos, "X").value) == (2.5, 3.0)
+    assert _campo(campos, "AI").value == pytest.approx(0.6)
+    assert _campo(campos, "R").value == 2  # 7 / 3,3
+    cruz = fuse(_img(), None, None, sec, axis_anisotropy=1.2)
+    assert "cruzamento" in _campo(cruz, "T").method
+    assert _campo(cruz, "R").value is None

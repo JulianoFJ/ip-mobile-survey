@@ -9,7 +9,9 @@ Cada campo de levantamento da planilha de simulação (colunas R a AM) é preenc
 | AH lâmpadas por ponto | cadastro | imagem | Pontos da PIP na mesma coordenada do PONNOT |
 | R faixas | mapa (tag `lanes`) | — | Contagem na imagem: próxima etapa |
 | AG/AL altura, AJ braço | imagem | — | Só a imagem mede |
-| S–Y larguras, AI | pendente | — | O OSM não tem largura (0% no golden); o caminho é o satélite e a segmentação |
+| T/W pista, S/X passeios, Y canteiro | imagem | — | Corte transversal do chão segmentado ([larguras](larguras-da-via.md)); o OSM não tem largura (0% no golden) |
+| AI poste–meio-fio | imagem | — | Postes no plano × meio-fio do mesmo lado |
+| R faixas (alternativa) | — | imagem | Largura da pista ÷ 3,3 m, quando o OSM não tem `lanes` |
 
 ## Como a rua é montada
 
@@ -35,3 +37,17 @@ Os erros somados passam do espaçamento entre postes:
 - coordenada esquemática do PONNOT: o Ignis mediu mediana de 6,3 m até o eixo da via.
 
 O casamento volta com triangulação entre quadros consecutivos e GNSS RTK. A fusão **por rua** não depende dele, porque usa estatística de muitos vãos.
+
+## Depois da correção da frente do veículo (21/11/2026)
+
+Com a frente medida pelo eixo da pista (ver [larguras](larguras-da-via.md)), o golden ficou assim:
+
+- T em 68 de 68 (mediana 8,1 m);
+- X em 35 e S em 20 (passeios, 2,5 e 2,0 m);
+- Y em 23 (canteiro, 4,3 m) e W em 17;
+- AI em 50 (1,8 m);
+- AF em 45 (30,5 m; a imagem passou de 4 para 18 com o eixo certo);
+- AL em 46 (6,8 m);
+- R em 61.
+
+**Casamento com a BDGD:** a posição corrigida é a melhor entre os giros testados. São 12 postes a até 4 m e 27 a até 6 m, contra 3 a 6 e 9 a 22 nos giros de 90°, 180° e −90°. A mediana, porém, segue em 11 m, então o casamento poste a poste continua fora da interface.

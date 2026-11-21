@@ -148,6 +148,36 @@ function PlantaVia({ captura, revisoes }: { captura: Captura; revisoes: Record<s
             )}
           </g>
         ))}
+        {/* corte transversal medido: pista, passeios e canteiro como faixas ao longo do quadro */}
+        {(() => {
+          const c = captura.via.corte;
+          if (!c) return null;
+          const faixa = (x0: number, x1: number, cor: string, k: string) => {
+            const [a] = P(Math.min(x0, x1), 0);
+            const [b] = P(Math.max(x0, x1), 0);
+            return <rect key={k} x={a} y={0} width={Math.max(b - a, 1)} height={H} fill={cor} />;
+          };
+          const els = [];
+          const L = c.meioFioEsquerdaM;
+          const R = c.meioFioDireitaM;
+          if (L != null && R != null) els.push(faixa(-L, R, "#E66E9640", "pista"));
+          if (L != null && c.passeioEsquerdaM) els.push(faixa(-L, -L - c.passeioEsquerdaM, "#F0C83C55", "pe"));
+          if (R != null && c.passeioDireitaM) els.push(faixa(R, R + c.passeioDireitaM, "#F0C83C55", "pd"));
+          if (c.canteiroM && c.canteiroLado) {
+            const s = c.canteiroLado === "direita" ? 1 : -1;
+            const borda = c.canteiroLado === "direita" ? R : L;
+            if (borda != null) {
+              els.push(faixa(s * borda, s * (borda + c.canteiroM), "#3CBE5A55", "ct"));
+              if (c.pista2M) els.push(faixa(s * (borda + c.canteiroM), s * (borda + c.canteiroM + c.pista2M), "#E66E9640", "p2"));
+            }
+          }
+          for (const [x, k] of [[L != null ? -L : null, "ml"], [R, "mr"]] as const) {
+            if (x == null) continue;
+            const [px] = P(x, 0);
+            els.push(<line key={k} x1={px} x2={px} y1={0} y2={H} stroke="#B4285A" strokeWidth={1.2} />);
+          }
+          return <g>{els}</g>;
+        })()}
         {/* veículo e sentido */}
         <rect x={cx - 4} y={cy - 7} width={8} height={14} rx={2} fill="#1B3664" />
         <path d={`M ${cx} ${cy - 22} l -5 8 h 10 z`} fill="#1B3664" />
@@ -178,7 +208,14 @@ function PlantaVia({ captura, revisoes }: { captura: Captura; revisoes: Record<s
         <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full" style={{ background: cor.centro }} /> canteiro</span>
         {vao?.valor != null && <span className="font-semibold text-navy">vão {fmt.m(vao.valor as number)}</span>}
         {fora > 0 && <span className={cn("text-texto-suave")}>{fora} fora do quadro</span>}
-        {captura.rumoDeslocamento == null && <span className="text-atencao-texto">sentido suposto: centro da imagem</span>}
+        {captura.via.corte && (
+          <span className="flex items-center gap-1">
+            <span className="h-2 w-3 rounded-sm" style={{ background: "#E66E9666" }} /> pista medida
+          </span>
+        )}
+        {captura.frente.fonte !== "eixo da pista" && (
+          <span className="text-atencao-texto">sentido suposto ({captura.frente.fonte})</span>
+        )}
       </figcaption>
     </figure>
   );

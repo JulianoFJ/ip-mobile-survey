@@ -24,6 +24,8 @@ import math
 import os
 from pathlib import Path
 
+from eval_cross_section import carregar_grade, ler_orientacao
+from eval_cross_section import travel_az as frente_do_veiculo
 from eval_zero_shot import ROOT, angular_from_cache, is_low_pole, is_tall_luminaire, load_manifest
 from PIL import Image
 
@@ -39,6 +41,7 @@ from ipsurvey.domain.cadastre import (
 )
 from ipsurvey.domain.detection import StructureClass
 from ipsurvey.domain.detection.ground import ground_estimate
+from ipsurvey.domain.extraction.cross_section import cross_section
 from ipsurvey.domain.extraction.fusion import FusedField, fuse
 from ipsurvey.domain.extraction.road import estimate_road
 from ipsurvey.domain.extraction.street import StreetEstimate, assign_poles, street_estimate
@@ -124,6 +127,7 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
     out = ROOT / "web/public/demo"
     (out / "img").mkdir(parents=True, exist_ok=True)
     post = PostProcess()
+    orient = ler_orientacao(args.dataset)
 
     cadastro = BdgdParquetCadastre(args.bdgd_dir) if args.bdgd_dir else None
     com_cadastro = cadastro.available() if cadastro else set()
@@ -145,9 +149,19 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
             if not is_low_pole(d, args.camera_height, args.min_pole_height)
             and not is_tall_luminaire(d)
         ]
+        # Frente do veículo no panorama: medida pelo eixo da pista (eval_cross_section
+        # orientar) ou, sem segmentação, o padrão da câmera. O rumo do centro da imagem sai
+        # do rumo de deslocamento menos essa frente: o `view:azimuth` do Panoramax supõe
+        # que o centro da imagem é a frente, o que não vale para a GoPro do golden (+90°).
         travel = it.get("travel_bearing_deg")
-        travel_az = math.radians(travel - it["heading_deg"]) if travel is not None else 0.0
-        road = estimate_road(dets, args.camera_height, travel_az)
+        frente = frente_do_veiculo(it, orient)
+        rumo_centro = (
+            (travel if travel is not None else it["heading_deg"]) - math.degrees(frente)
+        ) % 360
+        road = estimate_road(dets, args.camera_height, frente)
+        grade = carregar_grade(it, args.dataset, args.camera_height, frente)
+        corte = cross_section(grade) if grade is not None else None
+        o = orient.get(it["id"], {})
         planta = {p.index: p for p in road.poles}
         frame = LocalFrame(it["lat"], it["lon"])
 
@@ -173,7 +187,7 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
                 lat, lon = destination(
                     it["lat"],
                     it["lon"],
-                    it["heading_deg"] + math.degrees(d.az_center),
+                    rumo_centro + math.degrees(d.az_center),
                     est.distance_m,
                 )
             pl = planta.get(k)
@@ -223,7 +237,7 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
                 out / "img" / img_name, quality=82, optimize=True
             )
 
-        campos = fuse(road, rua, via)
+        campos = fuse(road, rua, via, corte, o.get("anisotropia"))
         capturas.append(
             {
                 "id": it["id"],
@@ -232,7 +246,11 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
                 "cidade": it["city"],
                 "lat": it["lat"],
                 "lon": it["lon"],
-                "rumo": it["heading_deg"],
+                "rumo": round(rumo_centro, 1),
+                "frente": {
+                    "deg": round(math.degrees(frente), 1),
+                    "fonte": o.get("fonte", "padrão da câmera"),
+                },
                 "rumoDeslocamento": travel,
                 "data": it["captured"],
                 "camera": it["camera"],
@@ -254,6 +272,20 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
                     else None,
                     "potenciaW": moda([q.power_w for sp in rua.poles for q in sp.pole.points])
                     if rua
+                    else None,
+                    "corte": {
+                        "meioFioEsquerdaM": corte.curb_left_m,
+                        "meioFioDireitaM": corte.curb_right_m,
+                        "passeioEsquerdaM": corte.sidewalk_left_m,
+                        "passeioDireitaM": corte.sidewalk_right_m,
+                        "canteiroM": corte.median_m,
+                        "canteiroLado": corte.median_side,
+                        "pista2M": corte.road2_width_m,
+                        "fatias": corte.rows_used,
+                        "fatiasTotal": corte.rows_total,
+                        "anisotropiaEixo": o.get("anisotropia"),
+                    }
+                    if corte
                     else None,
                     "campos": [campo_json(f) for f in campos],
                 },
