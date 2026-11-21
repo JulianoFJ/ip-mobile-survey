@@ -1,0 +1,1034 @@
+# Gerado a partir da API do Panoramax. Baixe com: uv run python scripts/fetch_datasets.py panoramax-br-v0
+name: panoramax-br-v0
+description: 'Panoramas 360° equirretangulares de vias urbanas brasileiras, com postes, braços e luminárias visíveis. Primeira
+  avaliação qualitativa de detectores zero-shot (issue #15). Sem rótulos.'
+source: Panoramax (https://panoramax.xyz), API STAC pública, sem autenticação
+license: CC-BY-SA-4.0
+attribution: Imagens © contribuidores do Panoramax (autores por item), licença CC BY-SA 4.0
+retrieved: '2026-11-21'
+local_dir: data/golden/panoramax-br-v0
+notes:
+- A maioria (GoPro Max, autor Túllio) tem uma faixa com logotipo "MUITO ALÉM DAS FRONTEIRAS" no nadir, abaixo de cerca de
+  -60°, além do capô do carro. A fileira do horizonte e a inclinada (+35°) não são afetadas.
+- As imagens não têm rótulos. Servem para avaliação visual e para criar rótulos depois.
+items:
+- file: belo-horizonte_000_56754cd9.jpg
+  id: 56754cd9-080b-436c-8baf-80a97a6a15b9
+  collection: 5e9f60e8-28b8-4982-be72-9a98f2de06d1
+  city: Belo Horizonte
+  lat: -19.913865
+  lon: -43.944642
+  captured: '2026-01-19'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/56/75/4c/d9/080b-436c-8baf-80a97a6a15b9.jpg
+  sha256: db71eb14178920f14387231ff8e225d8d7e2235c1154d9a94a331d194d836c6f
+  bytes: 3185238
+- file: belo-horizonte_001_fbe95d6a.jpg
+  id: fbe95d6a-79b5-4202-96a1-ffd790b0ccc2
+  collection: 6eea8503-4baf-466f-8af4-e4b51bc60f90
+  city: Belo Horizonte
+  lat: -19.925247
+  lon: -43.958124
+  captured: '2026-01-19'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/fb/e9/5d/6a/79b5-4202-96a1-ffd790b0ccc2.jpg
+  sha256: d24e684045de29d8157edc45451a19273ac83042d6b9533503e2505738c895ff
+  bytes: 3126976
+- file: belo-horizonte_002_b1819a10.jpg
+  id: b1819a10-5e1d-47da-8a6c-cdd0e837cf57
+  collection: 6eea8503-4baf-466f-8af4-e4b51bc60f90
+  city: Belo Horizonte
+  lat: -19.93208
+  lon: -43.955091
+  captured: '2026-01-19'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/b1/81/9a/10/5e1d-47da-8a6c-cdd0e837cf57.jpg
+  sha256: 045ee3d3c15080b0567ddd0d3bf54b36f5bde6ba922c2263060e02689bf92e4f
+  bytes: 3140888
+- file: belo-horizonte_003_7c4ea36f.jpg
+  id: 7c4ea36f-f5a9-4756-8b6e-dd7ec83ab36d
+  collection: 6eea8503-4baf-466f-8af4-e4b51bc60f90
+  city: Belo Horizonte
+  lat: -19.933239
+  lon: -43.951047
+  captured: '2026-01-19'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/7c/4e/a3/6f/f5a9-4756-8b6e-dd7ec83ab36d.jpg
+  sha256: fb0b82ef59b1fb7a6e43b4accf5336831cd60480be9561ca3b66e0143a6046cb
+  bytes: 3118191
+- file: belo-horizonte_004_c2b06a87.jpg
+  id: c2b06a87-6b2c-4c6c-ae2e-4c12aacc1e4a
+  collection: 5e9f60e8-28b8-4982-be72-9a98f2de06d1
+  city: Belo Horizonte
+  lat: -19.92913
+  lon: -43.951096
+  captured: '2026-01-19'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/c2/b0/6a/87/6b2c-4c6c-ae2e-4c12aacc1e4a.jpg
+  sha256: 5d48f07a8849f19f2a5a8f95ee2dc5f3ae5c6e30ba87876d1a2ffd66921dd495
+  bytes: 3005310
+- file: belo-horizonte_005_39203179.jpg
+  id: 39203179-53ca-4c16-88f9-59d227f0d477
+  collection: 5e9f60e8-28b8-4982-be72-9a98f2de06d1
+  city: Belo Horizonte
+  lat: -19.924337
+  lon: -43.952442
+  captured: '2026-01-19'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/39/20/31/79/53ca-4c16-88f9-59d227f0d477.jpg
+  sha256: 55e89187f8b8ae3dc03db714721a6b9f861cabcad8fcfb07d8e87c46300ee68f
+  bytes: 3225733
+- file: brasilia_006_ea640d00.jpg
+  id: ea640d00-471a-4bc2-9e33-bed7de43a2b6
+  collection: 30f64d53-39c0-46b3-b30a-cfab3a59862b
+  city: Brasilia
+  lat: -15.795924
+  lon: -47.879544
+  captured: '2025-09-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/ea/64/0d/00/471a-4bc2-9e33-bed7de43a2b6.jpg
+  sha256: 8c30d12af93f99d14cb8e17b87a8efb95c8c4ea60a20fdd3c309c0da54362802
+  bytes: 3031337
+- file: brasilia_007_faa8ebec.jpg
+  id: faa8ebec-7bd8-4677-ac09-8e406d3cbe85
+  collection: 30f64d53-39c0-46b3-b30a-cfab3a59862b
+  city: Brasilia
+  lat: -15.794826
+  lon: -47.889222
+  captured: '2025-09-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/fa/a8/eb/ec/7bd8-4677-ac09-8e406d3cbe85.jpg
+  sha256: 155abf37059e1dfd35432d18dd46a32c6ae9ff81cb8ccbcf173ab6157fb3b1af
+  bytes: 3000766
+- file: brasilia_008_40bedf6f.jpg
+  id: 40bedf6f-787a-4ac0-8d19-912833375e27
+  collection: 03632937-684b-478d-9495-44f3f686eca4
+  city: Brasilia
+  lat: -15.791565
+  lon: -47.89361
+  captured: '2025-09-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/40/be/df/6f/787a-4ac0-8d19-912833375e27.jpg
+  sha256: d0d35af6b912bfb3d700bf4c37905fe8d94d8c83126ab8aa9ce58de2731f74d9
+  bytes: 3014713
+- file: brasilia_009_6a369072.jpg
+  id: 6a369072-b59c-40be-9a87-dc11509a97a0
+  collection: 30f64d53-39c0-46b3-b30a-cfab3a59862b
+  city: Brasilia
+  lat: -15.800223
+  lon: -47.886673
+  captured: '2025-09-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/6a/36/90/72/b59c-40be-9a87-dc11509a97a0.jpg
+  sha256: a2161750fe52e199293285b5db2f6b18ffcb40faac39476a0974e18bc9bcf3e7
+  bytes: 2994691
+- file: brasilia_010_cca6c75a.jpg
+  id: cca6c75a-f097-4737-b132-0e106c314ed2
+  collection: 30f64d53-39c0-46b3-b30a-cfab3a59862b
+  city: Brasilia
+  lat: -15.794704
+  lon: -47.883903
+  captured: '2025-09-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/cc/a6/c7/5a/f097-4737-b132-0e106c314ed2.jpg
+  sha256: 7c093cff9f5fa95b31f96b852235d131a67c2761dd1adaff8fe963b65c1c6e73
+  bytes: 3047998
+- file: brasilia_011_6710ccc5.jpg
+  id: 6710ccc5-b895-40c0-8dfd-5359b99a7d05
+  collection: 2bb18177-c0bd-494d-a995-16ea34504f39
+  city: Brasilia
+  lat: -15.795412
+  lon: -47.874335
+  captured: '2025-09-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/67/10/cc/c5/b895-40c0-8dfd-5359b99a7d05.jpg
+  sha256: 16df76e707a8cb6954b15935b249cb86d718210dbb5024926c2e2c74d190154d
+  bytes: 3104937
+- file: salvador_012_051c40c2.jpg
+  id: 051c40c2-fb12-4ba9-88da-5b5210d5e7d5
+  collection: 5833d181-e6f1-4422-969d-b22eec422d2d
+  city: Salvador
+  lat: -12.940171
+  lon: -38.499746
+  captured: '2026-05-14'
+  camera: RICOH THETA S
+  width: 5376
+  height: 2688
+  author: SeverinGeo
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/05/1c/40/c2/fb12-4ba9-88da-5b5210d5e7d5.jpg
+  sha256: a1c63633b6574cd9492f354d84a4014a62edc02fc19d4019dfee336d12537a17
+  bytes: 4056095
+- file: salvador_013_be4a06f0.jpg
+  id: be4a06f0-4ca7-414e-b239-013640d49e5f
+  collection: 04ad2216-ed3d-46df-a74b-b4cd9358acae
+  city: Salvador
+  lat: -12.936286
+  lon: -38.497083
+  captured: '2026-05-14'
+  camera: RICOH THETA S
+  width: 5376
+  height: 2688
+  author: SeverinGeo
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/be/4a/06/f0/4ca7-414e-b239-013640d49e5f.jpg
+  sha256: c659440496b5ff9a76e667883e71491be4e304b3ec1fa99e7010c22bce73c46f
+  bytes: 4043304
+- file: belem_014_90e055c1.jpg
+  id: 90e055c1-a481-4b47-a6f7-47752ac98f46
+  collection: 6adf8ba2-0ae2-482d-a742-d943389feb5c
+  city: Belem
+  lat: -1.462139
+  lon: -48.504382
+  captured: '2024-12-08'
+  camera: RICOH THETA S
+  width: 5376
+  height: 2688
+  author: SeverinGeo
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/90/e0/55/c1/a481-4b47-a6f7-47752ac98f46.jpg
+  sha256: baaf7d14e43911627a66d5d30f7ed18b71196eaf04c869ada20f6e1b94069acf
+  bytes: 3950541
+- file: gov-valadares_015_03fe0ec6.jpg
+  id: 03fe0ec6-4ee5-4bb6-a24d-39777e109d60
+  collection: a7a8c183-bacc-494e-8a7a-404d44d4e110
+  city: Gov Valadares
+  lat: -18.85225
+  lon: -41.950786
+  captured: '2026-08-16'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/03/fe/0e/c6/4ee5-4bb6-a24d-39777e109d60.jpg
+  sha256: ed54d9caa8a32894df6a1be5865d0186db4ee9ae54633d4afdd2b6b0b5826333
+  bytes: 3169622
+- file: gov-valadares_016_319045dd.jpg
+  id: 319045dd-7d8e-4651-bd13-cc9874460533
+  collection: a7a8c183-bacc-494e-8a7a-404d44d4e110
+  city: Gov Valadares
+  lat: -18.845683
+  lon: -41.934966
+  captured: '2026-08-16'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/31/90/45/dd/7d8e-4651-bd13-cc9874460533.jpg
+  sha256: 382ec04db14483bb174da299b4d32f2ebf6f749ea4b0a683bd011a2b92e23250
+  bytes: 3254304
+- file: gov-valadares_017_04a52629.jpg
+  id: 04a52629-47b7-47b1-ac51-d6eeadccc046
+  collection: 928a38fd-e7a3-41ab-afc8-30841d09154d
+  city: Gov Valadares
+  lat: -18.865556
+  lon: -41.951515
+  captured: '2026-08-16'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/04/a5/26/29/47b7-47b1-ac51-d6eeadccc046.jpg
+  sha256: e5171e7142f2b3e04f7663efa2b23430d3e9cd59407662fbf020b010f487b7b5
+  bytes: 2994256
+- file: gov-valadares_018_92436ee0.jpg
+  id: 92436ee0-1c65-4f63-b84e-b664e4cbfcf6
+  collection: a7a8c183-bacc-494e-8a7a-404d44d4e110
+  city: Gov Valadares
+  lat: -18.849481
+  lon: -41.942645
+  captured: '2026-08-16'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/92/43/6e/e0/1c65-4f63-b84e-b664e4cbfcf6.jpg
+  sha256: f2e051ee70aa300ce1034b8b4b5bedbd671ae76743817f7096c3d9c9a60fa374
+  bytes: 3358404
+- file: gov-valadares_019_7ec4314c.jpg
+  id: 7ec4314c-79d8-4455-8f04-b13ac12908ce
+  collection: 928a38fd-e7a3-41ab-afc8-30841d09154d
+  city: Gov Valadares
+  lat: -18.861299
+  lon: -41.942422
+  captured: '2026-08-16'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/7e/c4/31/4c/79d8-4455-8f04-b13ac12908ce.jpg
+  sha256: 5edc849ac6b94f0e8d28dcc80c40e2bebfcdba8bfd40ddbd68a338cf81c94c08
+  bytes: 3105270
+- file: gov-valadares_020_a6c44d2c.jpg
+  id: a6c44d2c-54d6-418c-8aa0-5621bc10d12c
+  collection: 928a38fd-e7a3-41ab-afc8-30841d09154d
+  city: Gov Valadares
+  lat: -18.868824
+  lon: -41.954464
+  captured: '2026-08-16'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/a6/c4/4d/2c/54d6-418c-8aa0-5621bc10d12c.jpg
+  sha256: 4dff0fe48a337f907680ff0aed0ad8241d1ca3251ca93e7d836e2ac34794ea21
+  bytes: 3057504
+- file: ipatinga_021_cfb5037d.jpg
+  id: cfb5037d-d29e-4795-8090-deb36f14dd18
+  collection: c3a4927d-dfca-4ddb-8c5b-86337e7ac941
+  city: Ipatinga
+  lat: -19.469218
+  lon: -42.537855
+  captured: '2026-06-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/cf/b5/03/7d/d29e-4795-8090-deb36f14dd18.jpg
+  sha256: 6a636b52d22051bef7ddafe43bc15a1266258eddb966c4d855cb1b6b10e5c48c
+  bytes: 3084648
+- file: ipatinga_022_b53780f1.jpg
+  id: b53780f1-863b-403f-ab79-43e99a68c36f
+  collection: f3910de0-039b-495f-8c54-0c0e5e5eb0bf
+  city: Ipatinga
+  lat: -19.483004
+  lon: -42.548868
+  captured: '2026-07-02'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/b5/37/80/f1/863b-403f-ab79-43e99a68c36f.jpg
+  sha256: 952719a631a6110aa8cb91dcf362cb5f6612d0f4e319078e6ee21c6508f59997
+  bytes: 3331392
+- file: ipatinga_023_615bc641.jpg
+  id: 615bc641-3373-4c78-8778-37709788d031
+  collection: eea05b76-4c18-4cdd-a356-160acb0cc2ad
+  city: Ipatinga
+  lat: -19.460611
+  lon: -42.526177
+  captured: '2026-02-07'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/61/5b/c6/41/3373-4c78-8778-37709788d031.jpg
+  sha256: 670feeb20ab0e4d0207263dd0d45e662b477ad92d87038753ed823942a141c6c
+  bytes: 3243733
+- file: ipatinga_025_7c780851.jpg
+  id: 7c780851-c342-448d-a279-a6ec5d5b9b4d
+  collection: f3910de0-039b-495f-8c54-0c0e5e5eb0bf
+  city: Ipatinga
+  lat: -19.480615
+  lon: -42.54511
+  captured: '2026-07-02'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/7c/78/08/51/c342-448d-a279-a6ec5d5b9b4d.jpg
+  sha256: d3168ba35a0a82f576d082b5047532e54e0b2c5d7808b421d3fd3e210554a6b8
+  bytes: 3204961
+- file: teofilo-otoni_027_45eb468d.jpg
+  id: 45eb468d-7d6a-4082-82fa-89130c47d3a2
+  collection: ea6560e9-3209-4952-b653-4fcd3d27e2a8
+  city: Teofilo Otoni
+  lat: -17.844441
+  lon: -41.514953
+  captured: '2026-02-07'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/45/eb/46/8d/7d6a-4082-82fa-89130c47d3a2.jpg
+  sha256: 5811b794247f6e0e0fcd6ac14ae9206943d82091e9e2a3710433d32f27fc9a27
+  bytes: 3154510
+- file: teofilo-otoni_028_e4b89d0b.jpg
+  id: e4b89d0b-9989-4897-9daa-a714e0eff81f
+  collection: fcf9efb7-f271-4f4e-b66b-41a3c420aefd
+  city: Teofilo Otoni
+  lat: -17.863755
+  lon: -41.515333
+  captured: '2026-08-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/e4/b8/9d/0b/9989-4897-9daa-a714e0eff81f.jpg
+  sha256: fa4a1b2e4eef4092e38865998c5d552d92952d6a6d04d3d378ca84c9a541282e
+  bytes: 3081248
+- file: teofilo-otoni_029_206f68f5.jpg
+  id: 206f68f5-6c87-40bc-bff7-d6bda0c63f14
+  collection: fcf9efb7-f271-4f4e-b66b-41a3c420aefd
+  city: Teofilo Otoni
+  lat: -17.870969
+  lon: -41.518372
+  captured: '2026-08-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/20/6f/68/f5/6c87-40bc-bff7-d6bda0c63f14.jpg
+  sha256: 1bc6ad0a7cf77d9ebe97388c72a105bda083dc5b1925d5d18fea4d8461cafbd8
+  bytes: 3278218
+- file: teofilo-otoni_030_8570f1db.jpg
+  id: 8570f1db-d913-403f-9eaf-f5ec636f7f0e
+  collection: 534565d2-398d-476a-aa6f-ab20fcc46ad3
+  city: Teofilo Otoni
+  lat: -17.857299
+  lon: -41.514928
+  captured: '2026-08-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/85/70/f1/db/d913-403f-9eaf-f5ec636f7f0e.jpg
+  sha256: 979dcd7642c238a402846e5a28f0c6b063d20fd2172e0da3ecda768581815a42
+  bytes: 3008441
+- file: teofilo-otoni_031_ac364c81.jpg
+  id: ac364c81-cd82-4f5d-8802-a168ae4a7903
+  collection: ea6560e9-3209-4952-b653-4fcd3d27e2a8
+  city: Teofilo Otoni
+  lat: -17.849518
+  lon: -41.515047
+  captured: '2026-02-07'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/ac/36/4c/81/cd82-4f5d-8802-a168ae4a7903.jpg
+  sha256: 0226bf03d03b251fd5424fef2848ca5ee10e72631413be63ee4b3e870e2abf28
+  bytes: 3023618
+- file: teofilo-otoni_032_e4cbdb16.jpg
+  id: e4cbdb16-5365-421a-82aa-54f94bd41e19
+  collection: fcf9efb7-f271-4f4e-b66b-41a3c420aefd
+  city: Teofilo Otoni
+  lat: -17.867914
+  lon: -41.514137
+  captured: '2026-08-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/e4/cb/db/16/5365-421a-82aa-54f94bd41e19.jpg
+  sha256: b3a9a5240ef3c42cde936354a3d8cf17bce25eb3d3c80cc7824e42be9784ba61
+  bytes: 3266152
+- file: goiania_033_863943aa.jpg
+  id: 863943aa-63f4-43ff-a06d-6ad1fa5a9865
+  collection: 6eb53130-5938-4517-9377-ce6dd37f4948
+  city: Goiania
+  lat: -16.679265
+  lon: -49.255095
+  captured: '2026-02-11'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/86/39/43/aa/63f4-43ff-a06d-6ad1fa5a9865.jpg
+  sha256: c6d44df8757b42055d3b6e661c92c3e86e767fb890f0cf043a550db28024794e
+  bytes: 3236768
+- file: goiania_034_e414aef5.jpg
+  id: e414aef5-0f82-4b86-b735-380b0c20474f
+  collection: 6f3913b9-d182-48f3-8427-2f7b7005377b
+  city: Goiania
+  lat: -16.681676
+  lon: -49.243572
+  captured: '2026-02-12'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/e4/14/ae/f5/0f82-4b86-b735-380b0c20474f.jpg
+  sha256: ce54e46dae0df2f3fe27de97972c8b97cb6d1d968381681edf719401124901d0
+  bytes: 3164909
+- file: goiania_035_534da36b.jpg
+  id: 534da36b-4020-4124-b66e-050c8dc1b2ed
+  collection: 91094efb-9718-4bfc-9510-2a9aaa607eff
+  city: Goiania
+  lat: -16.676861
+  lon: -49.245107
+  captured: '2026-02-12'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/53/4d/a3/6b/4020-4124-b66e-050c8dc1b2ed.jpg
+  sha256: c7161a11bd33dbd8126faca0e75b3d65055c32ec8ffe8cd906913127d784aa5f
+  bytes: 3088318
+- file: goiania_036_38727da1.jpg
+  id: 38727da1-4ac5-4963-9b1e-594ab8af7bf4
+  collection: ac4f6207-2675-4541-82ce-6df56f55aa67
+  city: Goiania
+  lat: -16.678648
+  lon: -49.249304
+  captured: '2026-02-11'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/38/72/7d/a1/4ac5-4963-9b1e-594ab8af7bf4.jpg
+  sha256: 371fdd2a3242429dcdd4294c4ef3e22194c0d5ebfaca1e17b139dceb27e982ce
+  bytes: 3143164
+- file: goiania_037_faf074e7.jpg
+  id: faf074e7-c6d1-49d4-9398-6bf72cb70879
+  collection: 91094efb-9718-4bfc-9510-2a9aaa607eff
+  city: Goiania
+  lat: -16.68586
+  lon: -49.246902
+  captured: '2026-02-12'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/fa/f0/74/e7/c6d1-49d4-9398-6bf72cb70879.jpg
+  sha256: e2584e7aa2d6872fe510dfbeff4ff02761811151038c5887e0f8b47124580c99
+  bytes: 3155181
+- file: goiania_038_e602a0c4.jpg
+  id: e602a0c4-7c44-4a21-8270-1fde390fd3b6
+  collection: ac4f6207-2675-4541-82ce-6df56f55aa67
+  city: Goiania
+  lat: -16.673591
+  lon: -49.249936
+  captured: '2026-02-11'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/e6/02/a0/c4/7c44-4a21-8270-1fde390fd3b6.jpg
+  sha256: a55f6ec580ff73418dd39c41d5e84412049dbdf60381d8b181db1b4ede8b9958
+  bytes: 3076186
+- file: fortaleza_039_88f118e1.jpg
+  id: 88f118e1-65dd-47bd-9c0e-c865a9bf9d65
+  collection: 087a4eab-7aad-4041-b607-4863e57bb423
+  city: Fortaleza
+  lat: -3.744029
+  lon: -38.577925
+  captured: '2024-03-15'
+  camera: Arashi Vision insta360 x3
+  width: 11968
+  height: 5984
+  author: matheusgomesms
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/88/f1/18/e1/65dd-47bd-9c0e-c865a9bf9d65.jpg
+  sha256: 9ed6b8c65bdeef4e7c1d68ff2dd07a0b6be04a0d6b67b98ff457531b3e943b28
+  bytes: 38223884
+- file: fortaleza_041_fad6debd.jpg
+  id: fad6debd-d511-4482-bfe1-f00485f39ed1
+  collection: 087a4eab-7aad-4041-b607-4863e57bb423
+  city: Fortaleza
+  lat: -3.741141
+  lon: -38.574576
+  captured: '2024-03-15'
+  camera: Arashi Vision insta360 x3
+  width: 11968
+  height: 5984
+  author: matheusgomesms
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/fa/d6/de/bd/d511-4482-bfe1-f00485f39ed1.jpg
+  sha256: df40a71b27d59d0fc480a6026666e82b0d1babf2e5d6d299a553707c343bcc6c
+  bytes: 41373612
+- file: rio-verde_042_69bfb76e.jpg
+  id: 69bfb76e-24a2-4e25-ba25-4bd6913e5bf5
+  collection: ea57d3f5-d77a-46b0-81de-ab550c28df93
+  city: Rio Verde
+  lat: -17.796103
+  lon: -50.913877
+  captured: '2026-05-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/69/bf/b7/6e/24a2-4e25-ba25-4bd6913e5bf5.jpg
+  sha256: 6ec43ad98048c72b9c0678db84fffa192c9832cb13098aeb4b745dd9916ab049
+  bytes: 3084658
+- file: rio-verde_043_732a7668.jpg
+  id: 732a7668-c083-4c46-a298-d030c2b77be3
+  collection: 4e2fd1cf-a1cb-44ec-9fb1-b4a67fbf5411
+  city: Rio Verde
+  lat: -17.788754
+  lon: -50.918792
+  captured: '2026-05-09'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/73/2a/76/68/c083-4c46-a298-d030c2b77be3.jpg
+  sha256: 8d322b32cbb00ab179bcfc41bfa3a113abf8312598e8d529fb3e3915825c6132
+  bytes: 3128693
+- file: rio-verde_044_0d7a5e38.jpg
+  id: 0d7a5e38-f274-42f8-99b8-582d484ddb4f
+  collection: 9b07811b-2fdd-4f32-8b5b-0cddfb0855fd
+  city: Rio Verde
+  lat: -17.806362
+  lon: -50.918156
+  captured: '2026-05-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/0d/7a/5e/38/f274-42f8-99b8-582d484ddb4f.jpg
+  sha256: d3855cc924a4d0a12d026eaf8e3acc2b2fcfd49829942b18f83401c77f3277a0
+  bytes: 3200468
+- file: rio-verde_045_348284e4.jpg
+  id: 348284e4-f5c7-4379-bf87-0f811c394dd9
+  collection: 8c4dbeeb-eb6d-4570-9bb1-b714db666c1b
+  city: Rio Verde
+  lat: -17.79153
+  lon: -50.913112
+  captured: '2026-05-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/34/82/84/e4/f5c7-4379-bf87-0f811c394dd9.jpg
+  sha256: 845543bb91ca12f5bf1542faa953021254fb5f2eb75b6d5ecccd62d9359cc608
+  bytes: 3130515
+- file: rio-verde_046_75ce1335.jpg
+  id: 75ce1335-f793-474e-ad69-45377cbae354
+  collection: 426c6e0f-089b-445c-9031-fdb72f6b5aef
+  city: Rio Verde
+  lat: -17.789791
+  lon: -50.923072
+  captured: '2026-05-09'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/75/ce/13/35/f793-474e-ad69-45377cbae354.jpg
+  sha256: ed3230905a5638a1d56a6cdbce34315e367d58df2ab38e337e7cd4b69c63b533
+  bytes: 3103587
+- file: rio-verde_047_12afd62b.jpg
+  id: 12afd62b-592c-4838-b211-9b24433508b2
+  collection: 9b07811b-2fdd-4f32-8b5b-0cddfb0855fd
+  city: Rio Verde
+  lat: -17.799499
+  lon: -50.917373
+  captured: '2026-05-15'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/12/af/d6/2b/592c-4838-b211-9b24433508b2.jpg
+  sha256: 8d3a4a6295bbe2a28de64b8247479a2eab5bc4a477d95bca379bbc69677517c1
+  bytes: 2996360
+- file: araguari_050_8f4c84b6.jpg
+  id: 8f4c84b6-1919-4b61-934d-3edc9f01a5af
+  collection: 991f24c3-e353-4c74-a817-959d347808e7
+  city: Araguari
+  lat: -18.653762
+  lon: -48.143364
+  captured: '2026-05-27'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/8f/4c/84/b6/1919-4b61-934d-3edc9f01a5af.jpg
+  sha256: 7bea26dc40215e615e37aaf1baae1bd496360318ad40e0cbadbd66c06b825a69
+  bytes: 3138118
+- file: patrocinio_054_6b542c9c.jpg
+  id: 6b542c9c-5a63-4fd9-aa47-dc24b0f44c65
+  collection: 64b300c5-25d8-458c-af85-a3d6a1a69a4f
+  city: Patrocinio
+  lat: -18.948903
+  lon: -46.990039
+  captured: '2026-05-27'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/6b/54/2c/9c/5a63-4fd9-aa47-dc24b0f44c65.jpg
+  sha256: 64732dd6529d65518967ba0fe2cb8082c6a3c94296dd259f6b73496c67e35285
+  bytes: 3179117
+- file: patrocinio_055_76bc43e6.jpg
+  id: 76bc43e6-a834-4c9e-997d-89ef1c7c979b
+  collection: a16b240b-e429-44dc-9418-62d918026173
+  city: Patrocinio
+  lat: -18.940029
+  lon: -46.992725
+  captured: '2026-05-27'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/76/bc/43/e6/a834-4c9e-997d-89ef1c7c979b.jpg
+  sha256: 0701911f503d51f515a17c92362fad0ae80b1abf53ddd455c6c8453322e8cca9
+  bytes: 3214047
+- file: patrocinio_058_3fcaa885.jpg
+  id: 3fcaa885-62ad-4102-822e-7a3d5db745f6
+  collection: 4d4030e0-b01d-4f1e-9203-38910dc9cbac
+  city: Patrocinio
+  lat: -18.949703
+  lon: -46.96023
+  captured: '2026-05-27'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/3f/ca/a8/85/62ad-4102-822e-7a3d5db745f6.jpg
+  sha256: 3226b04703990e46cb532266651f35be9ff15f72c8f89be57931a5810d655d49
+  bytes: 3112255
+- file: patrocinio_059_836f9fb9.jpg
+  id: 836f9fb9-31c5-44f7-bb1a-ed8c0da08a75
+  collection: 4d4030e0-b01d-4f1e-9203-38910dc9cbac
+  city: Patrocinio
+  lat: -18.950246
+  lon: -46.974712
+  captured: '2026-05-27'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/83/6f/9f/b9/31c5-44f7-bb1a-ed8c0da08a75.jpg
+  sha256: 040ddfb39a1632ea385c285aca18d2344682235c0ac365cf8b93356c14bed823
+  bytes: 3157830
+- file: diamantina_061_d817455e.jpg
+  id: d817455e-15c5-4dcf-a074-137d09a86a80
+  collection: d5180cf6-8984-4d60-999d-6c61a7f0da40
+  city: Diamantina
+  lat: -18.238324
+  lon: -43.596605
+  captured: '2026-05-29'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/d8/17/45/5e/15c5-4dcf-a074-137d09a86a80.jpg
+  sha256: a3e93805176482474bf853555c613488027e1dc478476c86cffeee49f74e18be
+  bytes: 3189310
+- file: diamantina_062_f1fd5763.jpg
+  id: f1fd5763-f4ea-446f-9e3d-57c2ebaef546
+  collection: 7d7491f9-f3d6-492a-90a7-866c1587f453
+  city: Diamantina
+  lat: -18.243893
+  lon: -43.602873
+  captured: '2026-05-29'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/f1/fd/57/63/f4ea-446f-9e3d-57c2ebaef546.jpg
+  sha256: c628aeb1a14030334eb24e208b903da14b7309524e6cbb0b246e1691255c1e54
+  bytes: 3109460
+- file: diamantina_063_4a37492c.jpg
+  id: 4a37492c-77a5-4087-8c89-772911436971
+  collection: d5180cf6-8984-4d60-999d-6c61a7f0da40
+  city: Diamantina
+  lat: -18.243014
+  lon: -43.598346
+  captured: '2026-05-29'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/4a/37/49/2c/77a5-4087-8c89-772911436971.jpg
+  sha256: 6a5811788380d01a57f855c9f409d5a1b2c126994a826aa09fc6544ccd50b347
+  bytes: 3251647
+- file: diamantina_064_9540b546.jpg
+  id: 9540b546-f6f0-4254-866d-45b19f583f75
+  collection: 2b76b2fc-a6d7-4e7b-a0ba-1aa8b87df5cb
+  city: Diamantina
+  lat: -18.240617
+  lon: -43.60548
+  captured: '2026-05-30'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/95/40/b5/46/f6f0-4254-866d-45b19f583f75.jpg
+  sha256: fc829ba01eb2a64f6243f75cb68e54c54558e3b551fc19c19387f3aad7a77a29
+  bytes: 3316651
+- file: mucuge_065_66130a2e.jpg
+  id: 66130a2e-d1e9-49de-8cb6-f6ab26574610
+  collection: e68c41cc-8a9f-4a7d-9819-147fc31448e6
+  city: Mucuge
+  lat: -13.00522
+  lon: -41.372775
+  captured: '2025-05-13'
+  camera: RICOH THETA S
+  width: 5376
+  height: 2688
+  author: SeverinGeo
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/66/13/0a/2e/d1e9-49de-8cb6-f6ab26574610.jpg
+  sha256: 6d991192ceeecd761e382da6a4d72e178c83cb3d084683359113e41365930ed4
+  bytes: 4126705
+- file: itumbiara_073_c825ca84.jpg
+  id: c825ca84-c174-411b-9434-2e6759e5233b
+  collection: e21bb67e-1669-4068-ae1d-c0ce4ca5a5ba
+  city: Itumbiara
+  lat: -18.362973
+  lon: -49.215978
+  captured: '2026-05-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/c8/25/ca/84/c174-411b-9434-2e6759e5233b.jpg
+  sha256: 4cbd7898de6f6c7fa2800adb95eeaf5e7fc7984a02961bb871c833792116e99c
+  bytes: 3255375
+- file: itumbiara_076_3f2a600c.jpg
+  id: 3f2a600c-f13e-4dee-8c6b-7d2ef429a205
+  collection: e21bb67e-1669-4068-ae1d-c0ce4ca5a5ba
+  city: Itumbiara
+  lat: -18.384074
+  lon: -49.208334
+  captured: '2026-05-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/3f/2a/60/0c/f13e-4dee-8c6b-7d2ef429a205.jpg
+  sha256: 9f69effa6e770b9064080b964a5b5b4895b100e9da69f851c77e68a3ae6aca7a
+  bytes: 3294566
+- file: itumbiara_077_25f0cd68.jpg
+  id: 25f0cd68-9546-438b-9e6e-b222c2e19008
+  collection: e21bb67e-1669-4068-ae1d-c0ce4ca5a5ba
+  city: Itumbiara
+  lat: -18.426092
+  lon: -49.193219
+  captured: '2026-05-26'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/25/f0/cd/68/9546-438b-9e6e-b222c2e19008.jpg
+  sha256: 4fc5c5f74ed96721e6cf78b7af8d58675d424cd5b5a4cefed7feefdfde510825
+  bytes: 3179710
+- file: curvelo_084_d09bd44f.jpg
+  id: d09bd44f-7dcd-4223-901c-d21ae1d593dd
+  collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
+  city: Curvelo
+  lat: -18.731199
+  lon: -44.360859
+  captured: '2026-05-28'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/d0/9b/d4/4f/7dcd-4223-901c-d21ae1d593dd.jpg
+  sha256: af18bce5558cc868496bd03964324350c80cccdf7138081fe0d40d006babbca7
+  bytes: 3177618
+- file: curvelo_085_e09bd2c3.jpg
+  id: e09bd2c3-5186-4955-b98f-b187102e9c5d
+  collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
+  city: Curvelo
+  lat: -18.777312
+  lon: -44.44018
+  captured: '2026-05-28'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/e0/9b/d2/c3/5186-4955-b98f-b187102e9c5d.jpg
+  sha256: b358f18bd9ae1acf773aef8d353d922117d1aec13250ba8c85dd5198eeb203f8
+  bytes: 3413281
+- file: curvelo_086_93fdcaa5.jpg
+  id: 93fdcaa5-368d-449f-b7f4-33fefedf068d
+  collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
+  city: Curvelo
+  lat: -18.758989
+  lon: -44.420266
+  captured: '2026-05-28'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/93/fd/ca/a5/368d-449f-b7f4-33fefedf068d.jpg
+  sha256: 7c4899483963c0099607fd6795cb2dedf21bad2fba49e5eb0d6909944a02033f
+  bytes: 3152840
+- file: curvelo_088_0868a94d.jpg
+  id: 0868a94d-75cd-41bf-b099-c2cc030b7b38
+  collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
+  city: Curvelo
+  lat: -18.733064
+  lon: -44.365418
+  captured: '2026-05-28'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/08/68/a9/4d/75cd-41bf-b099-c2cc030b7b38.jpg
+  sha256: d4873bac6e6a87a4bdbfe8dcbd55dd2ef1772e03628a4ee68fd2d12a1de8814e
+  bytes: 3162315
+- file: curvelo_089_03957168.jpg
+  id: 03957168-7d0d-4571-b741-1324d6c40eeb
+  collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
+  city: Curvelo
+  lat: -18.771653
+  lon: -44.43177
+  captured: '2026-05-28'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/03/95/71/68/7d0d-4571-b741-1324d6c40eeb.jpg
+  sha256: 3ef4420f256b0e91d1679e8e2f03971e635fcee9f2c7708df84c8ab96b091a49
+  bytes: 3211121
+- file: caratinga_091_7936d64c.jpg
+  id: 7936d64c-e4b6-47a0-b4f1-4d05e58869c2
+  collection: dbb13ec0-6d0a-46fe-ba36-e62e9a99a049
+  city: Caratinga
+  lat: -19.79014
+  lon: -42.142768
+  captured: '2026-08-17'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/79/36/d6/4c/e4b6-47a0-b4f1-4d05e58869c2.jpg
+  sha256: c4f240cfb218d7053f836d516c5cdd0093203e9375e8c757af9bc6e144c1d8ca
+  bytes: 3140890
+- file: caratinga_092_5edf1262.jpg
+  id: 5edf1262-f4d9-4e33-9550-00d09ac02dd5
+  collection: dbb13ec0-6d0a-46fe-ba36-e62e9a99a049
+  city: Caratinga
+  lat: -19.783715
+  lon: -42.137872
+  captured: '2026-08-17'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/5e/df/12/62/f4d9-4e33-9550-00d09ac02dd5.jpg
+  sha256: 1bb921a2e27ab36f8c47f2fb49803902b5bfa6f3379d018cb2b9bba76e01d762
+  bytes: 3132493
+- file: caratinga_093_bf01ab6e.jpg
+  id: bf01ab6e-b7dd-4695-8536-b01b5081b06d
+  collection: dab54baf-b1c4-4565-8ab9-eb9496eec9b1
+  city: Caratinga
+  lat: -19.764664
+  lon: -42.131775
+  captured: '2026-08-17'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/bf/01/ab/6e/b7dd-4695-8536-b01b5081b06d.jpg
+  sha256: 05bb8df5c985070868162dfb15c88bc8521ba92f1377e254b27c068d9f87ed4b
+  bytes: 3015584
+- file: caratinga_094_840413e0.jpg
+  id: 840413e0-eb6d-4478-9b59-25f25f274bc1
+  collection: dbb13ec0-6d0a-46fe-ba36-e62e9a99a049
+  city: Caratinga
+  lat: -19.789843
+  lon: -42.13849
+  captured: '2026-08-17'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/84/04/13/e0/eb6d-4478-9b59-25f25f274bc1.jpg
+  sha256: 6df8dafcaec5fa639591b650567f117f77f634cd382ae4b516fa4a3fd6b4db0a
+  bytes: 3276831
+- file: caratinga_095_cf55ee22.jpg
+  id: cf55ee22-8ade-4fe5-8b0a-30d6d54e98ea
+  collection: e03a096b-ce9f-4774-907a-40f28a6aa76e
+  city: Caratinga
+  lat: -19.770411
+  lon: -42.132182
+  captured: '2026-08-17'
+  camera: GoPro Max
+  width: 5760
+  height: 2880
+  author: Túllio
+  license: CC-BY-SA-4.0
+  uri: https://panoramax.openstreetmap.fr/images/cf/55/ee/22/8ade-4fe5-8b0a-30d6d54e98ea.jpg
+  sha256: e2ed6cf5caec211a4d2fd11cebe4dae24166d3b7ab18493f60b298dfb31f1e45
+  bytes: 3097408
