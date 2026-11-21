@@ -20,6 +20,14 @@ dependencies = [
 [project.scripts]
 ipsurvey = "ipsurvey.cli.main:app"
 
+[project.optional-dependencies]
+vision = [
+    "pillow>=11",
+    "scipy>=1.14",
+    "torch>=2.5",
+    "transformers>=4.46",
+]
+
 [dependency-groups]
 dev = [
     "ruff>=0.8",

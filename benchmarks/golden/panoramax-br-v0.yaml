@@ -10,6 +10,7 @@ local_dir: data/golden/panoramax-br-v0
 notes:
 - A maioria (GoPro Max, autor Túllio) tem uma faixa com logotipo "MUITO ALÉM DAS FRONTEIRAS" no nadir, abaixo de cerca de
   -60°, além do capô do carro. A fileira do horizonte e a inclinada (+35°) não são afetadas.
+- heading_deg: azimute (graus, horário a partir do norte) do centro da imagem, ou seja, da direção azimute 0 do panorama.
 - As imagens não têm rótulos. Servem para avaliação visual e para criar rótulos depois.
 items:
 - file: belo-horizonte_000_56754cd9.jpg
@@ -19,6 +20,7 @@ items:
   lat: -19.913865
   lon: -43.944642
   captured: '2026-01-19'
+  heading_deg: 208
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -34,6 +36,7 @@ items:
   lat: -19.925247
   lon: -43.958124
   captured: '2026-01-19'
+  heading_deg: 14
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -49,6 +52,7 @@ items:
   lat: -19.93208
   lon: -43.955091
   captured: '2026-01-19'
+  heading_deg: 312
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -64,6 +68,7 @@ items:
   lat: -19.933239
   lon: -43.951047
   captured: '2026-01-19'
+  heading_deg: 339
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -79,6 +84,7 @@ items:
   lat: -19.92913
   lon: -43.951096
   captured: '2026-01-19'
+  heading_deg: 137
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -94,6 +100,7 @@ items:
   lat: -19.924337
   lon: -43.952442
   captured: '2026-01-19'
+  heading_deg: 193
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -109,6 +116,7 @@ items:
   lat: -15.795924
   lon: -47.879544
   captured: '2025-09-26'
+  heading_deg: 107
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -124,6 +132,7 @@ items:
   lat: -15.794826
   lon: -47.889222
   captured: '2025-09-26'
+  heading_deg: 18
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -139,6 +148,7 @@ items:
   lat: -15.791565
   lon: -47.89361
   captured: '2025-09-26'
+  heading_deg: 78
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -154,6 +164,7 @@ items:
   lat: -15.800223
   lon: -47.886673
   captured: '2025-09-26'
+  heading_deg: 298
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -169,6 +180,7 @@ items:
   lat: -15.794704
   lon: -47.883903
   captured: '2025-09-26'
+  heading_deg: 103
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -184,6 +196,7 @@ items:
   lat: -15.795412
   lon: -47.874335
   captured: '2025-09-26'
+  heading_deg: 286
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -199,6 +212,7 @@ items:
   lat: -12.940171
   lon: -38.499746
   captured: '2026-05-14'
+  heading_deg: 68
   camera: RICOH THETA S
   width: 5376
   height: 2688
@@ -214,6 +228,7 @@ items:
   lat: -12.936286
   lon: -38.497083
   captured: '2026-05-14'
+  heading_deg: 73
   camera: RICOH THETA S
   width: 5376
   height: 2688
@@ -229,6 +244,7 @@ items:
   lat: -1.462139
   lon: -48.504382
   captured: '2024-12-08'
+  heading_deg: 147
   camera: RICOH THETA S
   width: 5376
   height: 2688
@@ -244,6 +260,7 @@ items:
   lat: -18.85225
   lon: -41.950786
   captured: '2026-08-16'
+  heading_deg: 235
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -259,6 +276,7 @@ items:
   lat: -18.845683
   lon: -41.934966
   captured: '2026-08-16'
+  heading_deg: 241
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -274,6 +292,7 @@ items:
   lat: -18.865556
   lon: -41.951515
   captured: '2026-08-16'
+  heading_deg: 225
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -289,6 +308,7 @@ items:
   lat: -18.849481
   lon: -41.942645
   captured: '2026-08-16'
+  heading_deg: 237
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -304,6 +324,7 @@ items:
   lat: -18.861299
   lon: -41.942422
   captured: '2026-08-16'
+  heading_deg: 322
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -319,6 +340,7 @@ items:
   lat: -18.868824
   lon: -41.954464
   captured: '2026-08-16'
+  heading_deg: 217
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -334,6 +356,7 @@ items:
   lat: -19.469218
   lon: -42.537855
   captured: '2026-06-15'
+  heading_deg: 199
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -349,6 +372,7 @@ items:
   lat: -19.483004
   lon: -42.548868
   captured: '2026-07-02'
+  heading_deg: 65
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -364,6 +388,7 @@ items:
   lat: -19.460611
   lon: -42.526177
   captured: '2026-02-07'
+  heading_deg: 231
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -379,6 +404,7 @@ items:
   lat: -19.480615
   lon: -42.54511
   captured: '2026-07-02'
+  heading_deg: 28
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -394,6 +420,7 @@ items:
   lat: -17.844441
   lon: -41.514953
   captured: '2026-02-07'
+  heading_deg: 201
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -409,6 +436,7 @@ items:
   lat: -17.863755
   lon: -41.515333
   captured: '2026-08-15'
+  heading_deg: 214
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -424,6 +452,7 @@ items:
   lat: -17.870969
   lon: -41.518372
   captured: '2026-08-15'
+  heading_deg: 282
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -439,6 +468,7 @@ items:
   lat: -17.857299
   lon: -41.514928
   captured: '2026-08-15'
+  heading_deg: 192
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -454,6 +484,7 @@ items:
   lat: -17.849518
   lon: -41.515047
   captured: '2026-02-07'
+  heading_deg: 167
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -469,6 +500,7 @@ items:
   lat: -17.867914
   lon: -41.514137
   captured: '2026-08-15'
+  heading_deg: 102
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -484,6 +516,7 @@ items:
   lat: -16.679265
   lon: -49.255095
   captured: '2026-02-11'
+  heading_deg: 215
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -499,6 +532,7 @@ items:
   lat: -16.681676
   lon: -49.243572
   captured: '2026-02-12'
+  heading_deg: 163
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -514,6 +548,7 @@ items:
   lat: -16.676861
   lon: -49.245107
   captured: '2026-02-12'
+  heading_deg: 89
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -529,6 +564,7 @@ items:
   lat: -16.678648
   lon: -49.249304
   captured: '2026-02-11'
+  heading_deg: 76
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -544,6 +580,7 @@ items:
   lat: -16.68586
   lon: -49.246902
   captured: '2026-02-12'
+  heading_deg: 87
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -559,6 +596,7 @@ items:
   lat: -16.673591
   lon: -49.249936
   captured: '2026-02-11'
+  heading_deg: 352
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -574,6 +612,7 @@ items:
   lat: -3.744029
   lon: -38.577925
   captured: '2024-03-15'
+  heading_deg: 69
   camera: Arashi Vision insta360 x3
   width: 11968
   height: 5984
@@ -589,6 +628,7 @@ items:
   lat: -3.741141
   lon: -38.574576
   captured: '2024-03-15'
+  heading_deg: 42
   camera: Arashi Vision insta360 x3
   width: 11968
   height: 5984
@@ -604,6 +644,7 @@ items:
   lat: -17.796103
   lon: -50.913877
   captured: '2026-05-15'
+  heading_deg: 229
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -619,6 +660,7 @@ items:
   lat: -17.788754
   lon: -50.918792
   captured: '2026-05-09'
+  heading_deg: 245
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -634,6 +676,7 @@ items:
   lat: -17.806362
   lon: -50.918156
   captured: '2026-05-15'
+  heading_deg: 310
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -649,6 +692,7 @@ items:
   lat: -17.79153
   lon: -50.913112
   captured: '2026-05-15'
+  heading_deg: 63
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -664,6 +708,7 @@ items:
   lat: -17.789791
   lon: -50.923072
   captured: '2026-05-09'
+  heading_deg: 312
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -679,6 +724,7 @@ items:
   lat: -17.799499
   lon: -50.917373
   captured: '2026-05-15'
+  heading_deg: 42
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -694,6 +740,7 @@ items:
   lat: -18.653762
   lon: -48.143364
   captured: '2026-05-27'
+  heading_deg: 58
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -709,6 +756,7 @@ items:
   lat: -18.948903
   lon: -46.990039
   captured: '2026-05-27'
+  heading_deg: 333
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -724,6 +772,7 @@ items:
   lat: -18.940029
   lon: -46.992725
   captured: '2026-05-27'
+  heading_deg: 249
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -739,6 +788,7 @@ items:
   lat: -18.949703
   lon: -46.96023
   captured: '2026-05-27'
+  heading_deg: 83
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -754,6 +804,7 @@ items:
   lat: -18.950246
   lon: -46.974712
   captured: '2026-05-27'
+  heading_deg: 87
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -769,6 +820,7 @@ items:
   lat: -18.238324
   lon: -43.596605
   captured: '2026-05-29'
+  heading_deg: 42
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -784,6 +836,7 @@ items:
   lat: -18.243893
   lon: -43.602873
   captured: '2026-05-29'
+  heading_deg: 128
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -799,6 +852,7 @@ items:
   lat: -18.243014
   lon: -43.598346
   captured: '2026-05-29'
+  heading_deg: 2
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -814,6 +868,7 @@ items:
   lat: -18.240617
   lon: -43.60548
   captured: '2026-05-30'
+  heading_deg: 167
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -829,6 +884,7 @@ items:
   lat: -13.00522
   lon: -41.372775
   captured: '2025-05-13'
+  heading_deg: 144
   camera: RICOH THETA S
   width: 5376
   height: 2688
@@ -844,6 +900,7 @@ items:
   lat: -18.362973
   lon: -49.215978
   captured: '2026-05-26'
+  heading_deg: 143
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -859,6 +916,7 @@ items:
   lat: -18.384074
   lon: -49.208334
   captured: '2026-05-26'
+  heading_deg: 161
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -874,6 +932,7 @@ items:
   lat: -18.426092
   lon: -49.193219
   captured: '2026-05-26'
+  heading_deg: 99
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -889,6 +948,7 @@ items:
   lat: -18.731199
   lon: -44.360859
   captured: '2026-05-28'
+  heading_deg: 174
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -904,6 +964,7 @@ items:
   lat: -18.777312
   lon: -44.44018
   captured: '2026-05-28'
+  heading_deg: 56
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -919,6 +980,7 @@ items:
   lat: -18.758989
   lon: -44.420266
   captured: '2026-05-28'
+  heading_deg: 22
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -934,6 +996,7 @@ items:
   lat: -18.733064
   lon: -44.365418
   captured: '2026-05-28'
+  heading_deg: 45
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -949,6 +1012,7 @@ items:
   lat: -18.771653
   lon: -44.43177
   captured: '2026-05-28'
+  heading_deg: 56
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -964,6 +1028,7 @@ items:
   lat: -19.79014
   lon: -42.142768
   captured: '2026-08-17'
+  heading_deg: 90
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -979,6 +1044,7 @@ items:
   lat: -19.783715
   lon: -42.137872
   captured: '2026-08-17'
+  heading_deg: 220
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -994,6 +1060,7 @@ items:
   lat: -19.764664
   lon: -42.131775
   captured: '2026-08-17'
+  heading_deg: 161
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -1009,6 +1076,7 @@ items:
   lat: -19.789843
   lon: -42.13849
   captured: '2026-08-17'
+  heading_deg: 168
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -1024,6 +1092,7 @@ items:
   lat: -19.770411
   lon: -42.132182
   captured: '2026-08-17'
+  heading_deg: 196
   camera: GoPro Max
   width: 5760
   height: 2880
