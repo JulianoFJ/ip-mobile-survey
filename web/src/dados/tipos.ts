@@ -1,0 +1,99 @@
+/**
+ * Contrato de dados do módulo de inspeção de campo.
+ *
+ * Hoje vem dos JSON de demonstração gerados por `scripts/export_web_demo.py`; depois, da
+ * API FastAPI (`ipsurvey.api`). Ângulos em radianos, no referencial do panorama:
+ * azimute 0 no centro da imagem, positivo para a direita; elevação positiva para cima.
+ */
+
+export type Classe = "poste" | "braco" | "luminaria";
+
+export type StatusCampanha = "rascunho" | "processando" | "em_revisao" | "concluida";
+
+/** Decisão de quem revisa uma detecção. */
+export type Revisao = "confirmada" | "rejeitada";
+
+export interface Deteccao {
+  id: string;
+  classe: Classe;
+  /** Confiança do detector, 0 a 1. */
+  score: number;
+  az: number;
+  azMeia: number;
+  elMin: number;
+  elMax: number;
+  /** O pé (ou o topo) encostava na borda da vista: medida incompleta. */
+  cortadoBase: boolean;
+  cortadoTopo: boolean;
+  /** Estimativa pelo plano do chão (só postes com o pé visível). */
+  alturaM: number | null;
+  /** A altura é um limite inferior (topo cortado). */
+  alturaMinima: boolean;
+  distanciaM: number | null;
+  /** Posição estimada do poste (rumo da câmera + azimute + distância). */
+  lat: number | null;
+  lon: number | null;
+}
+
+export interface Captura {
+  id: string;
+  arquivo: string;
+  /** Caminho relativo da imagem equirretangular reduzida. */
+  imagem: string;
+  cidade: string;
+  lat: number;
+  lon: number;
+  /** Rumo (graus a partir do norte, sentido horário) do centro do panorama. */
+  rumo: number;
+  data: string;
+  camera: string;
+  autor: string;
+  licenca: string;
+  /** Link para a imagem original na fonte. */
+  origem: string;
+  deteccoes: Deteccao[];
+}
+
+export interface ParametrosProcessamento {
+  alturaCameraM: number;
+  alturaMinimaPosteM: number;
+  limiares: Record<Classe, number>;
+  descricoes: Record<Classe, string[]>;
+}
+
+export interface Campanha {
+  id: string;
+  nome: string;
+  municipio: string;
+  status: StatusCampanha;
+  criadaEm: string;
+  fonte: string;
+  licenca: string;
+  modelo: string;
+  parametros: ParametrosProcessamento;
+  capturas: Captura[];
+}
+
+export interface ResumoCampanha {
+  id: string;
+  nome: string;
+  municipio: string;
+  status: StatusCampanha;
+  criadaEm: string;
+  modelo: string;
+  capturas: number;
+  postes: number;
+}
+
+export const CLASSES: Record<Classe, { rotulo: string; plural: string; icone: string; cor: string }> = {
+  poste: { rotulo: "Poste", plural: "Postes", icone: "vertical_align_top", cor: "#E8A24D" },
+  braco: { rotulo: "Braço", plural: "Braços", icone: "turn_right", cor: "#0EA5E9" },
+  luminaria: { rotulo: "Luminária", plural: "Luminárias", icone: "lightbulb", cor: "#17A672" },
+};
+
+export const STATUS: Record<StatusCampanha, { rotulo: string; tom: "neutro" | "marca" | "atencao" | "sucesso"; icone: string }> = {
+  rascunho: { rotulo: "Rascunho", tom: "neutro", icone: "edit_note" },
+  processando: { rotulo: "Processando", tom: "marca", icone: "progress_activity" },
+  em_revisao: { rotulo: "Em revisão", tom: "atencao", icone: "rule" },
+  concluida: { rotulo: "Concluída", tom: "sucesso", icone: "task_alt" },
+};
