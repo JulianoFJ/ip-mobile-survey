@@ -11,6 +11,7 @@ notes:
 - A maioria (GoPro Max, autor Túllio) tem uma faixa com logotipo "MUITO ALÉM DAS FRONTEIRAS" no nadir, abaixo de cerca de
   -60°, além do capô do carro. A fileira do horizonte e a inclinada (+35°) não são afetadas.
 - heading_deg: azimute (graus, horário a partir do norte) do centro da imagem, ou seja, da direção azimute 0 do panorama.
+- travel_bearing_deg: rumo de deslocamento (graus), da foto anterior para a seguinte na sequência do Panoramax.
 - As imagens não têm rótulos. Servem para avaliação visual e para criar rótulos depois.
 items:
 - file: belo-horizonte_000_56754cd9.jpg
@@ -21,6 +22,7 @@ items:
   lon: -43.944642
   captured: '2026-01-19'
   heading_deg: 208
+  travel_bearing_deg: 212.7
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -37,6 +39,7 @@ items:
   lon: -43.958124
   captured: '2026-01-19'
   heading_deg: 14
+  travel_bearing_deg: 14.2
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -53,6 +56,7 @@ items:
   lon: -43.955091
   captured: '2026-01-19'
   heading_deg: 312
+  travel_bearing_deg: 306.5
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -69,6 +73,7 @@ items:
   lon: -43.951047
   captured: '2026-01-19'
   heading_deg: 339
+  travel_bearing_deg: 347.7
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -85,6 +90,7 @@ items:
   lon: -43.951096
   captured: '2026-01-19'
   heading_deg: 137
+  travel_bearing_deg: 121.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -101,6 +107,7 @@ items:
   lon: -43.952442
   captured: '2026-01-19'
   heading_deg: 193
+  travel_bearing_deg: 192.9
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -117,6 +124,7 @@ items:
   lon: -47.879544
   captured: '2025-09-26'
   heading_deg: 107
+  travel_bearing_deg: 108.1
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -133,6 +141,7 @@ items:
   lon: -47.889222
   captured: '2025-09-26'
   heading_deg: 18
+  travel_bearing_deg: 17.4
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -149,6 +158,7 @@ items:
   lon: -47.89361
   captured: '2025-09-26'
   heading_deg: 78
+  travel_bearing_deg: 89.5
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -165,6 +175,7 @@ items:
   lon: -47.886673
   captured: '2025-09-26'
   heading_deg: 298
+  travel_bearing_deg: 299.2
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -181,6 +192,7 @@ items:
   lon: -47.883903
   captured: '2025-09-26'
   heading_deg: 103
+  travel_bearing_deg: 104.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -197,6 +209,7 @@ items:
   lon: -47.874335
   captured: '2025-09-26'
   heading_deg: 286
+  travel_bearing_deg: 287.0
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -213,6 +226,7 @@ items:
   lon: -38.499746
   captured: '2026-05-14'
   heading_deg: 68
+  travel_bearing_deg: 36.2
   camera: RICOH THETA S
   width: 5376
   height: 2688
@@ -229,6 +243,7 @@ items:
   lon: -38.497083
   captured: '2026-05-14'
   heading_deg: 73
+  travel_bearing_deg: 34.9
   camera: RICOH THETA S
   width: 5376
   height: 2688
@@ -245,6 +260,7 @@ items:
   lon: -48.504382
   captured: '2024-12-08'
   heading_deg: 147
+  travel_bearing_deg: 352.1
   camera: RICOH THETA S
   width: 5376
   height: 2688
@@ -261,6 +277,7 @@ items:
   lon: -41.950786
   captured: '2026-08-16'
   heading_deg: 235
+  travel_bearing_deg: 237.9
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -277,6 +294,7 @@ items:
   lon: -41.934966
   captured: '2026-08-16'
   heading_deg: 241
+  travel_bearing_deg: 242.7
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -293,6 +311,7 @@ items:
   lon: -41.951515
   captured: '2026-08-16'
   heading_deg: 225
+  travel_bearing_deg: 219.9
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -309,6 +328,7 @@ items:
   lon: -41.942645
   captured: '2026-08-16'
   heading_deg: 237
+  travel_bearing_deg: 236.5
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -325,6 +345,7 @@ items:
   lon: -41.942422
   captured: '2026-08-16'
   heading_deg: 322
+  travel_bearing_deg: 313.3
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -341,6 +362,7 @@ items:
   lon: -41.954464
   captured: '2026-08-16'
   heading_deg: 217
+  travel_bearing_deg: 214.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -357,6 +379,7 @@ items:
   lon: -42.537855
   captured: '2026-06-15'
   heading_deg: 199
+  travel_bearing_deg: 203.4
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -373,6 +396,7 @@ items:
   lon: -42.548868
   captured: '2026-07-02'
   heading_deg: 65
+  travel_bearing_deg: 64.2
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -389,6 +413,7 @@ items:
   lon: -42.526177
   captured: '2026-02-07'
   heading_deg: 231
+  travel_bearing_deg: 227.3
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -405,6 +430,7 @@ items:
   lon: -42.54511
   captured: '2026-07-02'
   heading_deg: 28
+  travel_bearing_deg: 30.5
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -421,6 +447,7 @@ items:
   lon: -41.514953
   captured: '2026-02-07'
   heading_deg: 201
+  travel_bearing_deg: 200.9
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -437,6 +464,7 @@ items:
   lon: -41.515333
   captured: '2026-08-15'
   heading_deg: 214
+  travel_bearing_deg: 212.4
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -453,6 +481,7 @@ items:
   lon: -41.518372
   captured: '2026-08-15'
   heading_deg: 282
+  travel_bearing_deg: 282.7
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -469,6 +498,7 @@ items:
   lon: -41.514928
   captured: '2026-08-15'
   heading_deg: 192
+  travel_bearing_deg: 192.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -485,6 +515,7 @@ items:
   lon: -41.515047
   captured: '2026-02-07'
   heading_deg: 167
+  travel_bearing_deg: 168.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -501,6 +532,7 @@ items:
   lon: -41.514137
   captured: '2026-08-15'
   heading_deg: 102
+  travel_bearing_deg: 104.0
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -517,6 +549,7 @@ items:
   lon: -49.255095
   captured: '2026-02-11'
   heading_deg: 215
+  travel_bearing_deg: 215.2
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -533,6 +566,7 @@ items:
   lon: -49.243572
   captured: '2026-02-12'
   heading_deg: 163
+  travel_bearing_deg: 162.8
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -549,6 +583,7 @@ items:
   lon: -49.245107
   captured: '2026-02-12'
   heading_deg: 89
+  travel_bearing_deg: 94.8
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -565,6 +600,7 @@ items:
   lon: -49.249304
   captured: '2026-02-11'
   heading_deg: 76
+  travel_bearing_deg: 74.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -581,6 +617,7 @@ items:
   lon: -49.246902
   captured: '2026-02-12'
   heading_deg: 87
+  travel_bearing_deg: 84.2
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -597,6 +634,7 @@ items:
   lon: -49.249936
   captured: '2026-02-11'
   heading_deg: 352
+  travel_bearing_deg: 353.3
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -613,6 +651,7 @@ items:
   lon: -38.577925
   captured: '2024-03-15'
   heading_deg: 69
+  travel_bearing_deg: 70.7
   camera: Arashi Vision insta360 x3
   width: 11968
   height: 5984
@@ -629,6 +668,7 @@ items:
   lon: -38.574576
   captured: '2024-03-15'
   heading_deg: 42
+  travel_bearing_deg: 41.9
   camera: Arashi Vision insta360 x3
   width: 11968
   height: 5984
@@ -645,6 +685,7 @@ items:
   lon: -50.913877
   captured: '2026-05-15'
   heading_deg: 229
+  travel_bearing_deg: 228.5
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -661,6 +702,7 @@ items:
   lon: -50.918792
   captured: '2026-05-09'
   heading_deg: 245
+  travel_bearing_deg: 243.7
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -677,6 +719,7 @@ items:
   lon: -50.918156
   captured: '2026-05-15'
   heading_deg: 310
+  travel_bearing_deg: 312.8
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -693,6 +736,7 @@ items:
   lon: -50.913112
   captured: '2026-05-15'
   heading_deg: 63
+  travel_bearing_deg: 62.8
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -709,6 +753,7 @@ items:
   lon: -50.923072
   captured: '2026-05-09'
   heading_deg: 312
+  travel_bearing_deg: 324.7
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -725,6 +770,7 @@ items:
   lon: -50.917373
   captured: '2026-05-15'
   heading_deg: 42
+  travel_bearing_deg: 40.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -741,6 +787,7 @@ items:
   lon: -48.143364
   captured: '2026-05-27'
   heading_deg: 58
+  travel_bearing_deg: 53.9
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -757,6 +804,7 @@ items:
   lon: -46.990039
   captured: '2026-05-27'
   heading_deg: 333
+  travel_bearing_deg: 335.1
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -773,6 +821,7 @@ items:
   lon: -46.992725
   captured: '2026-05-27'
   heading_deg: 249
+  travel_bearing_deg: 247.3
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -789,6 +838,7 @@ items:
   lon: -46.96023
   captured: '2026-05-27'
   heading_deg: 83
+  travel_bearing_deg: 84.3
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -805,6 +855,7 @@ items:
   lon: -46.974712
   captured: '2026-05-27'
   heading_deg: 87
+  travel_bearing_deg: 87.4
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -821,6 +872,7 @@ items:
   lon: -43.596605
   captured: '2026-05-29'
   heading_deg: 42
+  travel_bearing_deg: 45.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -837,6 +889,7 @@ items:
   lon: -43.602873
   captured: '2026-05-29'
   heading_deg: 128
+  travel_bearing_deg: 130.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -853,6 +906,7 @@ items:
   lon: -43.598346
   captured: '2026-05-29'
   heading_deg: 2
+  travel_bearing_deg: 1.8
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -869,6 +923,7 @@ items:
   lon: -43.60548
   captured: '2026-05-30'
   heading_deg: 167
+  travel_bearing_deg: 167.0
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -885,6 +940,7 @@ items:
   lon: -41.372775
   captured: '2025-05-13'
   heading_deg: 144
+  travel_bearing_deg: 101.4
   camera: RICOH THETA S
   width: 5376
   height: 2688
@@ -901,6 +957,7 @@ items:
   lon: -49.215978
   captured: '2026-05-26'
   heading_deg: 143
+  travel_bearing_deg: 152.8
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -917,6 +974,7 @@ items:
   lon: -49.208334
   captured: '2026-05-26'
   heading_deg: 161
+  travel_bearing_deg: 162.5
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -933,6 +991,7 @@ items:
   lon: -49.193219
   captured: '2026-05-26'
   heading_deg: 99
+  travel_bearing_deg: 128.0
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -949,6 +1008,7 @@ items:
   lon: -44.360859
   captured: '2026-05-28'
   heading_deg: 174
+  travel_bearing_deg: 167.5
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -965,6 +1025,7 @@ items:
   lon: -44.44018
   captured: '2026-05-28'
   heading_deg: 56
+  travel_bearing_deg: 55.2
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -981,6 +1042,7 @@ items:
   lon: -44.420266
   captured: '2026-05-28'
   heading_deg: 22
+  travel_bearing_deg: 21.4
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -997,6 +1059,7 @@ items:
   lon: -44.365418
   captured: '2026-05-28'
   heading_deg: 45
+  travel_bearing_deg: 44.0
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -1013,6 +1076,7 @@ items:
   lon: -44.43177
   captured: '2026-05-28'
   heading_deg: 56
+  travel_bearing_deg: 54.6
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -1029,6 +1093,7 @@ items:
   lon: -42.142768
   captured: '2026-08-17'
   heading_deg: 90
+  travel_bearing_deg: 88.9
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -1045,6 +1110,7 @@ items:
   lon: -42.137872
   captured: '2026-08-17'
   heading_deg: 220
+  travel_bearing_deg: 209.2
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -1061,6 +1127,7 @@ items:
   lon: -42.131775
   captured: '2026-08-17'
   heading_deg: 161
+  travel_bearing_deg: 162.8
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -1077,6 +1144,7 @@ items:
   lon: -42.13849
   captured: '2026-08-17'
   heading_deg: 168
+  travel_bearing_deg: 167.5
   camera: GoPro Max
   width: 5760
   height: 2880
@@ -1093,6 +1161,7 @@ items:
   lon: -42.132182
   captured: '2026-08-17'
   heading_deg: 196
+  travel_bearing_deg: 193.9
   camera: GoPro Max
   width: 5760
   height: 2880

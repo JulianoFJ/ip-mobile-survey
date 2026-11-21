@@ -3,6 +3,7 @@
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { CabecalhoCampanha, Carregando, ComCampanha } from "@/componentes/Campanha";
+import { ViaMalha } from "@/componentes/ViaMalha";
 import { VisualizadorPanorama } from "@/componentes/VisualizadorPanorama";
 import { fmt } from "@/dados/geometria";
 import { useRevisoes } from "@/dados/revisao";
@@ -30,6 +31,7 @@ function TelaRevisao({ campanha }: { campanha: Campanha }) {
   const { mapa: revisoes, decidir, exportar } = useRevisoes(campanha.id);
   const [visiveis, setVisiveis] = useState<Record<Classe, boolean>>({ poste: true, braco: true, luminaria: true });
   const [selDet, setSelDet] = useState<string | null>(null);
+  const [painel, setPainel] = useState<"deteccoes" | "via">("deteccoes");
 
   const idCaptura = busca.get("captura") ?? campanha.capturas[0]?.id ?? "";
   const idx = Math.max(0, campanha.capturas.findIndex((c) => c.id === idCaptura));
@@ -143,14 +145,38 @@ function TelaRevisao({ campanha }: { campanha: Campanha }) {
           </div>
         </div>
 
-        <div className="grid gap-4 xl:grid-cols-[1fr_340px]">
+        <div className="grid items-start gap-4 xl:grid-cols-[1fr_340px]">
           <VisualizadorPanorama captura={captura} revisoes={revisoes} classesVisiveis={visiveis} selecionada={selDet} aoSelecionar={setSelDet} />
-          <aside className="cartao flex max-h-[70vh] flex-col overflow-hidden">
-            <div className="flex items-center justify-between border-b border-borda px-4 py-2.5">
-              <p className="text-[0.88rem] font-semibold text-navy">{dets.length} detecções</p>
-              <Atalhos />
+          <aside className="cartao flex max-h-[78vh] flex-col overflow-hidden">
+            <div className="flex items-center justify-between border-b border-borda px-2">
+              <div role="tablist" aria-label="Painel lateral" className="flex">
+                {([
+                  ["deteccoes", `Detecções (${dets.length})`],
+                  ["via", "Via e malha"],
+                ] as const).map(([k, rot]) => (
+                  <button
+                    key={k}
+                    role="tab"
+                    type="button"
+                    aria-selected={painel === k}
+                    onClick={() => setPainel(k)}
+                    className={cn(
+                      "-mb-px border-b-2 px-2.5 py-2.5 text-[0.86rem] font-medium",
+                      painel === k ? "border-teal font-semibold text-navy" : "border-transparent text-texto-fraco hover:text-texto",
+                    )}
+                  >
+                    {rot}
+                  </button>
+                ))}
+              </div>
+              {painel === "deteccoes" && <Atalhos />}
             </div>
-            <ul className="min-h-0 flex-1 divide-y divide-borda overflow-y-auto">
+            {painel === "via" && (
+              <div className="min-h-0 flex-1 overflow-y-auto p-3">
+                <ViaMalha captura={captura} revisoes={revisoes} />
+              </div>
+            )}
+            <ul className={cn("min-h-0 flex-1 divide-y divide-borda overflow-y-auto", painel !== "deteccoes" && "hidden")}>
               {dets.map((d) => {
                 const rev = revisoes[d.id];
                 const sel = d.id === selDet;

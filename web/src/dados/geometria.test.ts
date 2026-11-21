@@ -4,7 +4,7 @@ import type { Captura, Deteccao } from "./tipos";
 
 const det = (az: number, azMeia: number, elMin = -0.1, elMax = 0.3): Deteccao => ({
   id: "x", classe: "poste", score: 0.5, az, azMeia, elMin, elMax, cortadoBase: false, cortadoTopo: false,
-  alturaM: null, alturaMinima: false, distanciaM: null, lat: null, lon: null,
+  alturaM: null, alturaMinima: false, distanciaM: null, lat: null, lon: null, planta: null,
 });
 
 describe("anguloParaPixel (mesma convenção de ipsurvey.domain.geometry.equirect)", () => {
