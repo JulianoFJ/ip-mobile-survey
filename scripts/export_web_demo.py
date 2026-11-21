@@ -32,6 +32,7 @@ from PIL import Image
 from ipsurvey.adapters.detection.owlv2 import DEFAULT_PROMPTS, DEFAULT_THRESHOLDS, PostProcess
 from ipsurvey.domain.detection import StructureClass
 from ipsurvey.domain.detection.ground import ground_estimate
+from ipsurvey.domain.extraction.road import RoadEstimate, estimate_road
 
 EARTH_R = 6_371_008.8
 
@@ -48,6 +49,86 @@ def destination(lat: float, lon: float, bearing_deg: float, dist_m: float) -> tu
         math.cos(delta) - math.sin(phi1) * math.sin(phi2),
     )
     return math.degrees(phi2), (math.degrees(lam2) + 540) % 360 - 180
+
+
+SEGMENTACAO = "Segmentação da superfície (pista, passeio, canteiro) — próxima etapa"
+
+
+def bloco_via(est: RoadEstimate) -> dict:
+    """Campos de levantamento da planilha de simulação (colunas R–AM) para um panorama.
+
+    `estado`: "estimado" (saiu da geometria dos postes e luminárias), "pendente" (depende
+    de etapa ainda não implementada). Valores em metros.
+    """
+
+    def campo(col, rotulo, valor, metodo, *, unidade="m", casas=1):  # noqa: PLR0913
+        v = round(valor, casas) if isinstance(valor, float) else valor
+        return {
+            "coluna": col,
+            "rotulo": rotulo,
+            "valor": v,
+            "unidade": unidade if v is not None else "",
+            "estado": "estimado" if v is not None else "pendente",
+            "metodo": metodo,
+        }
+
+    por_poste: dict[int, int] = {}
+    for lf in est.luminaires:
+        por_poste[lf.pole_index] = por_poste.get(lf.pole_index, 0) + 1
+    qtd = sorted(por_poste.values())[len(por_poste) // 2] if por_poste else None
+    vao_metodo = (
+        f"Mediana de {est.spacing_samples} espaçamento(s) entre postes vizinhos do mesmo lado"
+        if est.spacing_samples
+        else "Precisa de 2 postes vizinhos do mesmo lado com o pé visível"
+    )
+    lum_metodo = (
+        f"{len(est.luminaires)} luminária(s) associada(s) ao poste vizinho"
+        if est.luminaires
+        else "Nenhuma luminária associada a poste com geometria estável"
+    )
+    return {
+        "postesNoPlano": len(est.poles),
+        "larguraAlinhamentosM": round(est.alignment_width_m, 1)
+        if est.alignment_width_m is not None
+        else None,
+        "campos": [
+            campo("R", "Faixas de rodagem", None, "Contagem das faixas na pista segmentada"),
+            campo("S", "Largura do passeio 1", None, SEGMENTACAO),
+            campo("T", "Largura da via 1", None, SEGMENTACAO),
+            campo("U", "Passeio central 1", None, SEGMENTACAO),
+            campo("V", "Passeio central 2", None, SEGMENTACAO),
+            campo("W", "Largura da via 2", None, SEGMENTACAO),
+            campo("X", "Largura do passeio 2", None, SEGMENTACAO),
+            campo("Y", "Canteiro central", None, SEGMENTACAO),
+            campo("Z", "Ciclovia 1", None, SEGMENTACAO),
+            campo("AA", "Ciclovia 2", None, SEGMENTACAO),
+            campo("AB", "Estacionamento 1", None, SEGMENTACAO),
+            campo("AC", "Estacionamento 2", None, SEGMENTACAO),
+            campo(
+                "AD",
+                "Posteação",
+                est.arrangement,
+                "Lados com poste e alinhamento frente a frente",
+                unidade="",
+            ),
+            campo(
+                "AE",
+                "Tipo de estrutura",
+                None,
+                "Classificação visual do poste — próxima etapa",
+                unidade="",
+            ),
+            campo("AF", "Distância entre postes", est.pole_spacing_m, vao_metodo),
+            campo("AG", "Altura da luminária", est.mounting_height_m, lum_metodo),
+            campo("AH", "Lâmpadas por ponto", qtd, lum_metodo, unidade="", casas=0),
+            campo("AI", "Distância do poste à via", None, "Posição do meio-fio na segmentação"),
+            campo("AJ", "Projeção do braço", est.arm_projection_m, lum_metodo),
+            campo("AL", "Altura de instalação", est.mounting_height_m, lum_metodo),
+            campo(
+                "AM", "Projeção vertical", None, "Luminária com o braço inclinado — próxima etapa"
+            ),
+        ],
+    }
 
 
 def main() -> None:
@@ -77,6 +158,11 @@ def main() -> None:
             if not is_low_pole(d, args.camera_height, args.min_pole_height)
             and not is_tall_luminaire(d)
         ]
+        travel = it.get("travel_bearing_deg")
+        travel_az = math.radians(travel - it["heading_deg"]) if travel is not None else 0.0
+        road = estimate_road(dets, args.camera_height, travel_az)
+        via = bloco_via(road)
+        planta = {p.index: p for p in road.poles}
         img_name = Path(it["file"]).stem + ".jpg"
         dest_img = out / "img" / img_name
         if not dest_img.exists():
@@ -107,6 +193,13 @@ def main() -> None:
                     "distanciaM": round(est.distance_m, 2) if est else None,
                     "lat": round(lat, 7) if lat is not None else None,
                     "lon": round(lon, 7) if lon is not None else None,
+                    "planta": {
+                        "x": round(planta[k].x_m, 2),
+                        "y": round(planta[k].y_m, 2),
+                        "lado": planta[k].side.value,
+                    }
+                    if k in planta
+                    else None,
                 }
             )
         capturas.append(
@@ -118,12 +211,14 @@ def main() -> None:
                 "lat": it["lat"],
                 "lon": it["lon"],
                 "rumo": it["heading_deg"],
+                "rumoDeslocamento": travel,
                 "data": it["captured"],
                 "camera": it["camera"],
                 "autor": it["author"],
                 "licenca": it["license"],
                 "origem": f"https://api.panoramax.xyz/#focus=pic&pic={it['id']}",
                 "deteccoes": deteccoes,
+                "via": via,
             }
         )
 

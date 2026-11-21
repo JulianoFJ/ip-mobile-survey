@@ -33,6 +33,30 @@ export interface Deteccao {
   /** Posição estimada do poste (rumo da câmera + azimute + distância). */
   lat: number | null;
   lon: number | null;
+  /** Posição no chão em relação à câmera (x à direita, y à frente do deslocamento). */
+  planta: { x: number; y: number; lado: "esquerda" | "direita" | "centro" } | null;
+}
+
+/** Situação de um campo da planilha de simulação. */
+export type EstadoCampo = "estimado" | "pendente";
+
+export interface CampoVia {
+  /** Letra da coluna na planilha de simulação (contrato B–AW). */
+  coluna: string;
+  rotulo: string;
+  valor: number | string | null;
+  unidade: string;
+  estado: EstadoCampo;
+  /** Como o valor foi obtido, ou o que falta para obtê-lo. */
+  metodo: string;
+}
+
+/** Atributos de via e malha estimados num panorama. */
+export interface ViaMalha {
+  postesNoPlano: number;
+  /** Distância lateral entre os alinhamentos de postes (limite superior de passeio + via + passeio). */
+  larguraAlinhamentosM: number | null;
+  campos: CampoVia[];
 }
 
 export interface Captura {
@@ -45,6 +69,8 @@ export interface Captura {
   lon: number;
   /** Rumo (graus a partir do norte, sentido horário) do centro do panorama. */
   rumo: number;
+  /** Rumo de deslocamento (da foto anterior para a seguinte), se conhecido. */
+  rumoDeslocamento: number | null;
   data: string;
   camera: string;
   autor: string;
@@ -52,6 +78,7 @@ export interface Captura {
   /** Link para a imagem original na fonte. */
   origem: string;
   deteccoes: Deteccao[];
+  via: ViaMalha;
 }
 
 export interface ParametrosProcessamento {
