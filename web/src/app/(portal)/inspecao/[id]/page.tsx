@@ -89,7 +89,7 @@ function Painel({ campanha }: { campanha: Campanha }) {
         </div>
 
         <div className="grid gap-4 xl:grid-cols-[1fr_360px]">
-          <MapaResultados capturas={capturas} revisoes={revisoes} selecionada={selecionada} aoSelecionar={setSelecionada} altura="min(68vh, 640px)" />
+          <MapaResultados capturas={capturas} revisoes={revisoes} cadastro={campanha.cadastro} selecionada={selecionada} aoSelecionar={setSelecionada} altura="min(68vh, 640px)" />
           <aside className="cartao flex max-h-[min(68vh,640px)] min-h-[320px] flex-col overflow-hidden">
             {sel ? (
               <div className="flex min-h-0 flex-1 flex-col">

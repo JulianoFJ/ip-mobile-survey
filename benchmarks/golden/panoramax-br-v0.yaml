@@ -18,6 +18,7 @@ items:
   id: 56754cd9-080b-436c-8baf-80a97a6a15b9
   collection: 5e9f60e8-28b8-4982-be72-9a98f2de06d1
   city: Belo Horizonte
+  ibge: '3106200'
   lat: -19.913865
   lon: -43.944642
   captured: '2026-01-19'
@@ -35,6 +36,7 @@ items:
   id: fbe95d6a-79b5-4202-96a1-ffd790b0ccc2
   collection: 6eea8503-4baf-466f-8af4-e4b51bc60f90
   city: Belo Horizonte
+  ibge: '3106200'
   lat: -19.925247
   lon: -43.958124
   captured: '2026-01-19'
@@ -52,6 +54,7 @@ items:
   id: b1819a10-5e1d-47da-8a6c-cdd0e837cf57
   collection: 6eea8503-4baf-466f-8af4-e4b51bc60f90
   city: Belo Horizonte
+  ibge: '3106200'
   lat: -19.93208
   lon: -43.955091
   captured: '2026-01-19'
@@ -69,6 +72,7 @@ items:
   id: 7c4ea36f-f5a9-4756-8b6e-dd7ec83ab36d
   collection: 6eea8503-4baf-466f-8af4-e4b51bc60f90
   city: Belo Horizonte
+  ibge: '3106200'
   lat: -19.933239
   lon: -43.951047
   captured: '2026-01-19'
@@ -86,6 +90,7 @@ items:
   id: c2b06a87-6b2c-4c6c-ae2e-4c12aacc1e4a
   collection: 5e9f60e8-28b8-4982-be72-9a98f2de06d1
   city: Belo Horizonte
+  ibge: '3106200'
   lat: -19.92913
   lon: -43.951096
   captured: '2026-01-19'
@@ -103,6 +108,7 @@ items:
   id: 39203179-53ca-4c16-88f9-59d227f0d477
   collection: 5e9f60e8-28b8-4982-be72-9a98f2de06d1
   city: Belo Horizonte
+  ibge: '3106200'
   lat: -19.924337
   lon: -43.952442
   captured: '2026-01-19'
@@ -120,6 +126,7 @@ items:
   id: ea640d00-471a-4bc2-9e33-bed7de43a2b6
   collection: 30f64d53-39c0-46b3-b30a-cfab3a59862b
   city: Brasília
+  ibge: '5300108'
   lat: -15.795924
   lon: -47.879544
   captured: '2025-09-26'
@@ -137,6 +144,7 @@ items:
   id: faa8ebec-7bd8-4677-ac09-8e406d3cbe85
   collection: 30f64d53-39c0-46b3-b30a-cfab3a59862b
   city: Brasília
+  ibge: '5300108'
   lat: -15.794826
   lon: -47.889222
   captured: '2025-09-26'
@@ -154,6 +162,7 @@ items:
   id: 40bedf6f-787a-4ac0-8d19-912833375e27
   collection: 03632937-684b-478d-9495-44f3f686eca4
   city: Brasília
+  ibge: '5300108'
   lat: -15.791565
   lon: -47.89361
   captured: '2025-09-26'
@@ -171,6 +180,7 @@ items:
   id: 6a369072-b59c-40be-9a87-dc11509a97a0
   collection: 30f64d53-39c0-46b3-b30a-cfab3a59862b
   city: Brasília
+  ibge: '5300108'
   lat: -15.800223
   lon: -47.886673
   captured: '2025-09-26'
@@ -188,6 +198,7 @@ items:
   id: cca6c75a-f097-4737-b132-0e106c314ed2
   collection: 30f64d53-39c0-46b3-b30a-cfab3a59862b
   city: Brasília
+  ibge: '5300108'
   lat: -15.794704
   lon: -47.883903
   captured: '2025-09-26'
@@ -205,6 +216,7 @@ items:
   id: 6710ccc5-b895-40c0-8dfd-5359b99a7d05
   collection: 2bb18177-c0bd-494d-a995-16ea34504f39
   city: Brasília
+  ibge: '5300108'
   lat: -15.795412
   lon: -47.874335
   captured: '2025-09-26'
@@ -222,6 +234,7 @@ items:
   id: 051c40c2-fb12-4ba9-88da-5b5210d5e7d5
   collection: 5833d181-e6f1-4422-969d-b22eec422d2d
   city: Salvador
+  ibge: '2927408'
   lat: -12.940171
   lon: -38.499746
   captured: '2026-05-14'
@@ -239,6 +252,7 @@ items:
   id: be4a06f0-4ca7-414e-b239-013640d49e5f
   collection: 04ad2216-ed3d-46df-a74b-b4cd9358acae
   city: Salvador
+  ibge: '2927408'
   lat: -12.936286
   lon: -38.497083
   captured: '2026-05-14'
@@ -256,6 +270,7 @@ items:
   id: 90e055c1-a481-4b47-a6f7-47752ac98f46
   collection: 6adf8ba2-0ae2-482d-a742-d943389feb5c
   city: Belém
+  ibge: '1501402'
   lat: -1.462139
   lon: -48.504382
   captured: '2024-12-08'
@@ -273,6 +288,7 @@ items:
   id: 03fe0ec6-4ee5-4bb6-a24d-39777e109d60
   collection: a7a8c183-bacc-494e-8a7a-404d44d4e110
   city: Governador Valadares
+  ibge: '3127701'
   lat: -18.85225
   lon: -41.950786
   captured: '2026-08-16'
@@ -290,6 +306,7 @@ items:
   id: 319045dd-7d8e-4651-bd13-cc9874460533
   collection: a7a8c183-bacc-494e-8a7a-404d44d4e110
   city: Governador Valadares
+  ibge: '3127701'
   lat: -18.845683
   lon: -41.934966
   captured: '2026-08-16'
@@ -307,6 +324,7 @@ items:
   id: 04a52629-47b7-47b1-ac51-d6eeadccc046
   collection: 928a38fd-e7a3-41ab-afc8-30841d09154d
   city: Governador Valadares
+  ibge: '3127701'
   lat: -18.865556
   lon: -41.951515
   captured: '2026-08-16'
@@ -324,6 +342,7 @@ items:
   id: 92436ee0-1c65-4f63-b84e-b664e4cbfcf6
   collection: a7a8c183-bacc-494e-8a7a-404d44d4e110
   city: Governador Valadares
+  ibge: '3127701'
   lat: -18.849481
   lon: -41.942645
   captured: '2026-08-16'
@@ -341,6 +360,7 @@ items:
   id: 7ec4314c-79d8-4455-8f04-b13ac12908ce
   collection: 928a38fd-e7a3-41ab-afc8-30841d09154d
   city: Governador Valadares
+  ibge: '3127701'
   lat: -18.861299
   lon: -41.942422
   captured: '2026-08-16'
@@ -358,6 +378,7 @@ items:
   id: a6c44d2c-54d6-418c-8aa0-5621bc10d12c
   collection: 928a38fd-e7a3-41ab-afc8-30841d09154d
   city: Governador Valadares
+  ibge: '3127701'
   lat: -18.868824
   lon: -41.954464
   captured: '2026-08-16'
@@ -375,6 +396,7 @@ items:
   id: cfb5037d-d29e-4795-8090-deb36f14dd18
   collection: c3a4927d-dfca-4ddb-8c5b-86337e7ac941
   city: Ipatinga
+  ibge: '3131307'
   lat: -19.469218
   lon: -42.537855
   captured: '2026-06-15'
@@ -392,6 +414,7 @@ items:
   id: b53780f1-863b-403f-ab79-43e99a68c36f
   collection: f3910de0-039b-495f-8c54-0c0e5e5eb0bf
   city: Ipatinga
+  ibge: '3131307'
   lat: -19.483004
   lon: -42.548868
   captured: '2026-07-02'
@@ -409,6 +432,7 @@ items:
   id: 615bc641-3373-4c78-8778-37709788d031
   collection: eea05b76-4c18-4cdd-a356-160acb0cc2ad
   city: Ipatinga
+  ibge: '3131307'
   lat: -19.460611
   lon: -42.526177
   captured: '2026-02-07'
@@ -426,6 +450,7 @@ items:
   id: 7c780851-c342-448d-a279-a6ec5d5b9b4d
   collection: f3910de0-039b-495f-8c54-0c0e5e5eb0bf
   city: Ipatinga
+  ibge: '3131307'
   lat: -19.480615
   lon: -42.54511
   captured: '2026-07-02'
@@ -443,6 +468,7 @@ items:
   id: 45eb468d-7d6a-4082-82fa-89130c47d3a2
   collection: ea6560e9-3209-4952-b653-4fcd3d27e2a8
   city: Teófilo Otoni
+  ibge: '3168606'
   lat: -17.844441
   lon: -41.514953
   captured: '2026-02-07'
@@ -460,6 +486,7 @@ items:
   id: e4b89d0b-9989-4897-9daa-a714e0eff81f
   collection: fcf9efb7-f271-4f4e-b66b-41a3c420aefd
   city: Teófilo Otoni
+  ibge: '3168606'
   lat: -17.863755
   lon: -41.515333
   captured: '2026-08-15'
@@ -477,6 +504,7 @@ items:
   id: 206f68f5-6c87-40bc-bff7-d6bda0c63f14
   collection: fcf9efb7-f271-4f4e-b66b-41a3c420aefd
   city: Teófilo Otoni
+  ibge: '3168606'
   lat: -17.870969
   lon: -41.518372
   captured: '2026-08-15'
@@ -494,6 +522,7 @@ items:
   id: 8570f1db-d913-403f-9eaf-f5ec636f7f0e
   collection: 534565d2-398d-476a-aa6f-ab20fcc46ad3
   city: Teófilo Otoni
+  ibge: '3168606'
   lat: -17.857299
   lon: -41.514928
   captured: '2026-08-15'
@@ -511,6 +540,7 @@ items:
   id: ac364c81-cd82-4f5d-8802-a168ae4a7903
   collection: ea6560e9-3209-4952-b653-4fcd3d27e2a8
   city: Teófilo Otoni
+  ibge: '3168606'
   lat: -17.849518
   lon: -41.515047
   captured: '2026-02-07'
@@ -528,6 +558,7 @@ items:
   id: e4cbdb16-5365-421a-82aa-54f94bd41e19
   collection: fcf9efb7-f271-4f4e-b66b-41a3c420aefd
   city: Teófilo Otoni
+  ibge: '3168606'
   lat: -17.867914
   lon: -41.514137
   captured: '2026-08-15'
@@ -545,6 +576,7 @@ items:
   id: 863943aa-63f4-43ff-a06d-6ad1fa5a9865
   collection: 6eb53130-5938-4517-9377-ce6dd37f4948
   city: Goiânia
+  ibge: '5208707'
   lat: -16.679265
   lon: -49.255095
   captured: '2026-02-11'
@@ -562,6 +594,7 @@ items:
   id: e414aef5-0f82-4b86-b735-380b0c20474f
   collection: 6f3913b9-d182-48f3-8427-2f7b7005377b
   city: Goiânia
+  ibge: '5208707'
   lat: -16.681676
   lon: -49.243572
   captured: '2026-02-12'
@@ -579,6 +612,7 @@ items:
   id: 534da36b-4020-4124-b66e-050c8dc1b2ed
   collection: 91094efb-9718-4bfc-9510-2a9aaa607eff
   city: Goiânia
+  ibge: '5208707'
   lat: -16.676861
   lon: -49.245107
   captured: '2026-02-12'
@@ -596,6 +630,7 @@ items:
   id: 38727da1-4ac5-4963-9b1e-594ab8af7bf4
   collection: ac4f6207-2675-4541-82ce-6df56f55aa67
   city: Goiânia
+  ibge: '5208707'
   lat: -16.678648
   lon: -49.249304
   captured: '2026-02-11'
@@ -613,6 +648,7 @@ items:
   id: faf074e7-c6d1-49d4-9398-6bf72cb70879
   collection: 91094efb-9718-4bfc-9510-2a9aaa607eff
   city: Goiânia
+  ibge: '5208707'
   lat: -16.68586
   lon: -49.246902
   captured: '2026-02-12'
@@ -630,6 +666,7 @@ items:
   id: e602a0c4-7c44-4a21-8270-1fde390fd3b6
   collection: ac4f6207-2675-4541-82ce-6df56f55aa67
   city: Goiânia
+  ibge: '5208707'
   lat: -16.673591
   lon: -49.249936
   captured: '2026-02-11'
@@ -647,6 +684,7 @@ items:
   id: 88f118e1-65dd-47bd-9c0e-c865a9bf9d65
   collection: 087a4eab-7aad-4041-b607-4863e57bb423
   city: Fortaleza
+  ibge: '2304400'
   lat: -3.744029
   lon: -38.577925
   captured: '2024-03-15'
@@ -664,6 +702,7 @@ items:
   id: fad6debd-d511-4482-bfe1-f00485f39ed1
   collection: 087a4eab-7aad-4041-b607-4863e57bb423
   city: Fortaleza
+  ibge: '2304400'
   lat: -3.741141
   lon: -38.574576
   captured: '2024-03-15'
@@ -681,6 +720,7 @@ items:
   id: 69bfb76e-24a2-4e25-ba25-4bd6913e5bf5
   collection: ea57d3f5-d77a-46b0-81de-ab550c28df93
   city: Rio Verde
+  ibge: '5218805'
   lat: -17.796103
   lon: -50.913877
   captured: '2026-05-15'
@@ -698,6 +738,7 @@ items:
   id: 732a7668-c083-4c46-a298-d030c2b77be3
   collection: 4e2fd1cf-a1cb-44ec-9fb1-b4a67fbf5411
   city: Rio Verde
+  ibge: '5218805'
   lat: -17.788754
   lon: -50.918792
   captured: '2026-05-09'
@@ -715,6 +756,7 @@ items:
   id: 0d7a5e38-f274-42f8-99b8-582d484ddb4f
   collection: 9b07811b-2fdd-4f32-8b5b-0cddfb0855fd
   city: Rio Verde
+  ibge: '5218805'
   lat: -17.806362
   lon: -50.918156
   captured: '2026-05-15'
@@ -732,6 +774,7 @@ items:
   id: 348284e4-f5c7-4379-bf87-0f811c394dd9
   collection: 8c4dbeeb-eb6d-4570-9bb1-b714db666c1b
   city: Rio Verde
+  ibge: '5218805'
   lat: -17.79153
   lon: -50.913112
   captured: '2026-05-15'
@@ -749,6 +792,7 @@ items:
   id: 75ce1335-f793-474e-ad69-45377cbae354
   collection: 426c6e0f-089b-445c-9031-fdb72f6b5aef
   city: Rio Verde
+  ibge: '5218805'
   lat: -17.789791
   lon: -50.923072
   captured: '2026-05-09'
@@ -766,6 +810,7 @@ items:
   id: 12afd62b-592c-4838-b211-9b24433508b2
   collection: 9b07811b-2fdd-4f32-8b5b-0cddfb0855fd
   city: Rio Verde
+  ibge: '5218805'
   lat: -17.799499
   lon: -50.917373
   captured: '2026-05-15'
@@ -783,6 +828,7 @@ items:
   id: 8f4c84b6-1919-4b61-934d-3edc9f01a5af
   collection: 991f24c3-e353-4c74-a817-959d347808e7
   city: Araguari
+  ibge: '3103504'
   lat: -18.653762
   lon: -48.143364
   captured: '2026-05-27'
@@ -800,6 +846,7 @@ items:
   id: 6b542c9c-5a63-4fd9-aa47-dc24b0f44c65
   collection: 64b300c5-25d8-458c-af85-a3d6a1a69a4f
   city: Patrocínio
+  ibge: '3148103'
   lat: -18.948903
   lon: -46.990039
   captured: '2026-05-27'
@@ -817,6 +864,7 @@ items:
   id: 76bc43e6-a834-4c9e-997d-89ef1c7c979b
   collection: a16b240b-e429-44dc-9418-62d918026173
   city: Patrocínio
+  ibge: '3148103'
   lat: -18.940029
   lon: -46.992725
   captured: '2026-05-27'
@@ -834,6 +882,7 @@ items:
   id: 3fcaa885-62ad-4102-822e-7a3d5db745f6
   collection: 4d4030e0-b01d-4f1e-9203-38910dc9cbac
   city: Patrocínio
+  ibge: '3148103'
   lat: -18.949703
   lon: -46.96023
   captured: '2026-05-27'
@@ -851,6 +900,7 @@ items:
   id: 836f9fb9-31c5-44f7-bb1a-ed8c0da08a75
   collection: 4d4030e0-b01d-4f1e-9203-38910dc9cbac
   city: Patrocínio
+  ibge: '3148103'
   lat: -18.950246
   lon: -46.974712
   captured: '2026-05-27'
@@ -868,6 +918,7 @@ items:
   id: d817455e-15c5-4dcf-a074-137d09a86a80
   collection: d5180cf6-8984-4d60-999d-6c61a7f0da40
   city: Diamantina
+  ibge: '3121605'
   lat: -18.238324
   lon: -43.596605
   captured: '2026-05-29'
@@ -885,6 +936,7 @@ items:
   id: f1fd5763-f4ea-446f-9e3d-57c2ebaef546
   collection: 7d7491f9-f3d6-492a-90a7-866c1587f453
   city: Diamantina
+  ibge: '3121605'
   lat: -18.243893
   lon: -43.602873
   captured: '2026-05-29'
@@ -902,6 +954,7 @@ items:
   id: 4a37492c-77a5-4087-8c89-772911436971
   collection: d5180cf6-8984-4d60-999d-6c61a7f0da40
   city: Diamantina
+  ibge: '3121605'
   lat: -18.243014
   lon: -43.598346
   captured: '2026-05-29'
@@ -919,6 +972,7 @@ items:
   id: 9540b546-f6f0-4254-866d-45b19f583f75
   collection: 2b76b2fc-a6d7-4e7b-a0ba-1aa8b87df5cb
   city: Diamantina
+  ibge: '3121605'
   lat: -18.240617
   lon: -43.60548
   captured: '2026-05-30'
@@ -936,6 +990,7 @@ items:
   id: 66130a2e-d1e9-49de-8cb6-f6ab26574610
   collection: e68c41cc-8a9f-4a7d-9819-147fc31448e6
   city: Mucugê
+  ibge: '2922201'
   lat: -13.00522
   lon: -41.372775
   captured: '2025-05-13'
@@ -953,6 +1008,7 @@ items:
   id: c825ca84-c174-411b-9434-2e6759e5233b
   collection: e21bb67e-1669-4068-ae1d-c0ce4ca5a5ba
   city: Itumbiara
+  ibge: '5211503'
   lat: -18.362973
   lon: -49.215978
   captured: '2026-05-26'
@@ -970,6 +1026,7 @@ items:
   id: 3f2a600c-f13e-4dee-8c6b-7d2ef429a205
   collection: e21bb67e-1669-4068-ae1d-c0ce4ca5a5ba
   city: Itumbiara
+  ibge: '5211503'
   lat: -18.384074
   lon: -49.208334
   captured: '2026-05-26'
@@ -987,6 +1044,7 @@ items:
   id: 25f0cd68-9546-438b-9e6e-b222c2e19008
   collection: e21bb67e-1669-4068-ae1d-c0ce4ca5a5ba
   city: Itumbiara
+  ibge: '5211503'
   lat: -18.426092
   lon: -49.193219
   captured: '2026-05-26'
@@ -1004,6 +1062,7 @@ items:
   id: d09bd44f-7dcd-4223-901c-d21ae1d593dd
   collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
   city: Curvelo
+  ibge: '3120904'
   lat: -18.731199
   lon: -44.360859
   captured: '2026-05-28'
@@ -1021,6 +1080,7 @@ items:
   id: e09bd2c3-5186-4955-b98f-b187102e9c5d
   collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
   city: Curvelo
+  ibge: '3120904'
   lat: -18.777312
   lon: -44.44018
   captured: '2026-05-28'
@@ -1038,6 +1098,7 @@ items:
   id: 93fdcaa5-368d-449f-b7f4-33fefedf068d
   collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
   city: Curvelo
+  ibge: '3120904'
   lat: -18.758989
   lon: -44.420266
   captured: '2026-05-28'
@@ -1055,6 +1116,7 @@ items:
   id: 0868a94d-75cd-41bf-b099-c2cc030b7b38
   collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
   city: Curvelo
+  ibge: '3120904'
   lat: -18.733064
   lon: -44.365418
   captured: '2026-05-28'
@@ -1072,6 +1134,7 @@ items:
   id: 03957168-7d0d-4571-b741-1324d6c40eeb
   collection: 3f6bee67-72b8-4b17-a89f-ce13e49e73b2
   city: Curvelo
+  ibge: '3120904'
   lat: -18.771653
   lon: -44.43177
   captured: '2026-05-28'
@@ -1089,6 +1152,7 @@ items:
   id: 7936d64c-e4b6-47a0-b4f1-4d05e58869c2
   collection: dbb13ec0-6d0a-46fe-ba36-e62e9a99a049
   city: Caratinga
+  ibge: '3113404'
   lat: -19.79014
   lon: -42.142768
   captured: '2026-08-17'
@@ -1106,6 +1170,7 @@ items:
   id: 5edf1262-f4d9-4e33-9550-00d09ac02dd5
   collection: dbb13ec0-6d0a-46fe-ba36-e62e9a99a049
   city: Caratinga
+  ibge: '3113404'
   lat: -19.783715
   lon: -42.137872
   captured: '2026-08-17'
@@ -1123,6 +1188,7 @@ items:
   id: bf01ab6e-b7dd-4695-8536-b01b5081b06d
   collection: dab54baf-b1c4-4565-8ab9-eb9496eec9b1
   city: Caratinga
+  ibge: '3113404'
   lat: -19.764664
   lon: -42.131775
   captured: '2026-08-17'
@@ -1140,6 +1206,7 @@ items:
   id: 840413e0-eb6d-4478-9b59-25f25f274bc1
   collection: dbb13ec0-6d0a-46fe-ba36-e62e9a99a049
   city: Caratinga
+  ibge: '3113404'
   lat: -19.789843
   lon: -42.13849
   captured: '2026-08-17'
@@ -1157,6 +1224,7 @@ items:
   id: cf55ee22-8ade-4fe5-8b0a-30d6d54e98ea
   collection: e03a096b-ce9f-4774-907a-40f28a6aa76e
   city: Caratinga
+  ibge: '3113404'
   lat: -19.770411
   lon: -42.132182
   captured: '2026-08-17'

@@ -41,4 +41,5 @@ nav:
       - Vistas planas 360°: algorithms/perspective-views.md
       - Detecção em ângulos: algorithms/angular-detection.md
       - Malha NBR 5101: algorithms/nbr5101-grid.md
+      - Fusão de fontes: algorithms/fusao-fontes.md
   - Bases de dados: datasets.md

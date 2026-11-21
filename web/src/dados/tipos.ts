@@ -40,6 +40,15 @@ export interface Deteccao {
 /** Situação de um campo da planilha de simulação. */
 export type EstadoCampo = "estimado" | "pendente";
 
+/** De onde veio um valor. */
+export type Fonte = "imagem" | "cadastro" | "mapa";
+
+export interface Candidato {
+  fonte: Fonte;
+  valor: number | string;
+  detalhe: string;
+}
+
 export interface CampoVia {
   /** Letra da coluna na planilha de simulação (contrato B–AW). */
   coluna: string;
@@ -47,13 +56,37 @@ export interface CampoVia {
   valor: number | string | null;
   unidade: string;
   estado: EstadoCampo;
+  /** Fonte do valor escolhido (a preferida para o campo, entre as disponíveis). */
+  fonte: Fonte | null;
   /** Como o valor foi obtido, ou o que falta para obtê-lo. */
   metodo: string;
+  /** Duas fontes discordam (mais de 25% ou textos diferentes). */
+  divergente: boolean;
+  /** Todos os valores propostos, na ordem de preferência. */
+  candidatos: Candidato[];
+}
+
+/** Poste do cadastro (BDGD) no entorno das capturas. */
+export interface PosteCadastro {
+  id: string;
+  lat: number;
+  lon: number;
+  luminarias: number;
+  tecnologia: string | null;
+  potenciaW: number | null;
 }
 
 /** Atributos de via e malha estimados num panorama. */
 export interface ViaMalha {
   postesNoPlano: number;
+  /** Via do mapa em que a câmera está (OSM). */
+  logradouro: string | null;
+  classeOsm: string | null;
+  maoUnica: boolean | null;
+  /** Postes do cadastro atribuídos a essa via, e o que o cadastro diz deles. */
+  postesCadastroNaVia: number;
+  tecnologia: string | null;
+  potenciaW: number | null;
   /** Distância lateral entre os alinhamentos de postes (limite superior de passeio + via + passeio). */
   larguraAlinhamentosM: number | null;
   campos: CampoVia[];
@@ -97,7 +130,9 @@ export interface Campanha {
   fonte: string;
   licenca: string;
   modelo: string;
+  fontesCadastro: string | null;
   parametros: ParametrosProcessamento;
+  cadastro: PosteCadastro[];
   capturas: Captura[];
 }
 
@@ -116,6 +151,12 @@ export const CLASSES: Record<Classe, { rotulo: string; plural: string; icone: st
   poste: { rotulo: "Poste", plural: "Postes", icone: "vertical_align_top", cor: "#E8A24D" },
   braco: { rotulo: "Braço", plural: "Braços", icone: "turn_right", cor: "#0EA5E9" },
   luminaria: { rotulo: "Luminária", plural: "Luminárias", icone: "lightbulb", cor: "#17A672" },
+};
+
+export const FONTES: Record<Fonte, { rotulo: string; icone: string; tom: "marca" | "sucesso" | "neutro" }> = {
+  imagem: { rotulo: "Imagem 360°", icone: "panorama_photosphere", tom: "marca" },
+  cadastro: { rotulo: "Cadastro BDGD", icone: "table_view", tom: "sucesso" },
+  mapa: { rotulo: "Mapa (OSM)", icone: "map", tom: "neutro" },
 };
 
 export const STATUS: Record<StatusCampanha, { rotulo: string; tom: "neutro" | "marca" | "atencao" | "sucesso"; icone: string }> = {

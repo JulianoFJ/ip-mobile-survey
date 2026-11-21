@@ -4,7 +4,7 @@ import type { FeatureCollection } from "geojson";
 import type { StyleSpecification } from "maplibre-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Map, { Layer, NavigationControl, ScaleControl, Source, type MapLayerMouseEvent, type MapRef } from "react-map-gl/maplibre";
-import type { Captura, Revisao } from "@/dados/tipos";
+import type { Captura, PosteCadastro, Revisao } from "@/dados/tipos";
 import { Icone } from "@/ui/Icone";
 import { cn } from "@/ui/lib/cn";
 
@@ -27,14 +27,28 @@ const ESRI: StyleSpecification = {
 export interface MapaResultadosProps {
   capturas: Captura[];
   revisoes: Record<string, Revisao>;
+  /** Postes do cadastro (BDGD) para comparar com o levantamento. */
+  cadastro?: PosteCadastro[];
   selecionada?: string | null;
   aoSelecionar?: (capturaId: string) => void;
   altura?: number | string;
 }
 
-export default function MapaResultados({ capturas, revisoes, selecionada, aoSelecionar, altura = 520 }: MapaResultadosProps) {
+export default function MapaResultados({ capturas, revisoes, cadastro = [], selecionada, aoSelecionar, altura = 520 }: MapaResultadosProps) {
   const mapa = useRef<MapRef>(null);
   const [fundo, setFundo] = useState<"mapa" | "satelite">("mapa");
+  const [verCadastro, setVerCadastro] = useState(true);
+  const geoCadastro = useMemo<FeatureCollection>(
+    () => ({
+      type: "FeatureCollection",
+      features: cadastro.map((p) => ({
+        type: "Feature",
+        properties: { id: p.id, n: p.luminarias },
+        geometry: { type: "Point", coordinates: [p.lon, p.lat] },
+      })),
+    }),
+    [cadastro],
+  );
 
   const { pontos, postes, raios, limites } = useMemo(() => {
     const pontos: FeatureCollection = { type: "FeatureCollection", features: [] };
@@ -100,6 +114,21 @@ export default function MapaResultados({ capturas, revisoes, selecionada, aoSele
       >
         <NavigationControl position="top-right" showCompass={false} />
         <ScaleControl position="bottom-left" unit="metric" />
+        {verCadastro && (
+          <Source id="cadastro" type="geojson" data={geoCadastro}>
+            <Layer
+              id="cadastro"
+              type="circle"
+              minzoom={13}
+              paint={{
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 13, 2, 17, 4.5, 19, 7],
+                "circle-color": "#FFFFFF",
+                "circle-stroke-color": "#0F7A53",
+                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 13, 1, 17, 2],
+              }}
+            />
+          </Source>
+        )}
         <Source id="raios" type="geojson" data={raios}>
           <Layer
             id="raios"
@@ -148,13 +177,23 @@ export default function MapaResultados({ capturas, revisoes, selecionada, aoSele
             {f === "mapa" ? "Mapa" : "Satélite"}
           </button>
         ))}
+        {cadastro.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setVerCadastro((v) => !v)}
+            aria-pressed={verCadastro}
+            className={cn("flex items-center gap-1 border-l border-borda px-2.5 py-1.5 font-medium", verCadastro ? "bg-sucesso-suave text-sucesso-texto" : "text-texto-fraco hover:bg-superficie-alt")}
+          >
+            <Icone nome="table_view" tamanho={16} /> Cadastro BDGD
+          </button>
+        )}
       </div>
-      <Legenda />
+      <Legenda comCadastro={cadastro.length > 0 && verCadastro} />
     </div>
   );
 }
 
-function Legenda() {
+function Legenda({ comCadastro }: { comCadastro: boolean }) {
   const item = (cor: string, texto: string, borda = "#1B3664") => (
     <li className="flex items-center gap-1.5">
       <span className="h-2.5 w-2.5 rounded-full border" style={{ background: cor, borderColor: borda }} /> {texto}
@@ -166,6 +205,7 @@ function Legenda() {
       {item("#E8A24D", "Poste detectado (a revisar)")}
       {item("#17A672", "Poste confirmado")}
       {item("#DC5B52", "Poste rejeitado")}
+      {comCadastro && item("#FFFFFF", "Poste do cadastro (BDGD)", "#0F7A53")}
     </ul>
   );
 }
