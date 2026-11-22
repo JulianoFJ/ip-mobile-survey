@@ -1,0 +1,34 @@
+name: Publish temporary demo
+on:
+  push:
+    branches: [demo-pages]
+    paths: ['demo-app.zip', 'demo-assets.zip', '.github/workflows/demo-pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: demo-pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract verified static demo
+        run: |
+          mkdir -p _site
+          unzip -q demo-app.zip -d _site
+          unzip -q demo-assets.zip -d _site
+          test -f _site/inspecao/panoramax-br-v0/revisao/index.html
+          test -f _site/demo/campanhas.json
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - uses: actions/deploy-pages@v4
+        id: deployment
