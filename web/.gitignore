@@ -4,3 +4,5 @@ next-env.d.ts
 *.tsbuildinfo
 # Dados de demonstração gerados por scripts/export_web_demo.py (imagens CC BY-SA, fora do git)
 public/demo/
+# Worker do MapLibre, copiado de node_modules por scripts/copiar-worker-maplibre.mjs
+public/maplibre/

@@ -28,3 +28,16 @@ Já a versão web do Ignis (repositório HouerIgnis, `apps/web` e `packages/ui`)
 - A especificação §4 passa a ler "Next.js" no lugar de "Vite" (este ADR prevalece).
 - Enquanto não houver integração, mudanças nos tokens do Ignis precisam ser copiadas à mão para `web/src/ui/tokens.css`.
 - As revisões (confirmar ou rejeitar) ficam no navegador até existir a API. Por isso há "Exportar revisões" em JSON.
+
+## Adendo de 21/11/2026: segurança prevalece sobre paridade
+
+O Dependabot apontou falhas nas versões que o Ignis também usa:
+
+- `next` ≤ 15.5.27: execução remota de código sem autenticação na otimização de imagem com SVG (GHSA-2464-fhr4-w9xw, crítica), além de 4 outras;
+- `maplibre-gl` ≤ 6.4.0: contorno do sanitizador de HTML (GHSA-jrc7-96c5-q579, crítica; só há correção na 6.x);
+- `postcss` antigo embutido no `next`;
+- `tinypool`, usado pelo `vitest` (só no ambiente de teste).
+
+Este módulo subiu para `next` 15.5.29, `maplibre-gl` 6.4.1 e `vitest` 4.1.12, e força `postcss` ≥ 8.5.23 com override do pnpm. O `pnpm audit` ficou limpo. **Correção de segurança prevalece sobre a paridade**, e o Ignis precisa da mesma atualização.
+
+O MapLibre 6 é só ESM e carrega o worker por uma URL montada em tempo de execução, que o webpack não publica (o mapa fica em branco). `scripts/copiar-worker-maplibre.mjs` copia o worker para `public/maplibre/` antes do `dev` e do `build`, e o mapa chama `setWorkerUrl`. O Ignis vai precisar do mesmo ajuste no `MapView`.
