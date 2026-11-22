@@ -1,0 +1,10 @@
+# Bloco a acrescentar ao /etc/caddy/Caddyfile do servidor (não substitui nada).
+# HTTPS automático (Let's Encrypt) assim que o DNS de inspecao.panchdevelopment.io
+# apontar para o servidor. HASH_DA_SENHA vem de `caddy hash-password`.
+inspecao.panchdevelopment.io {
+	basic_auth {
+		equipe HASH_DA_SENHA
+	}
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:3100
+}
