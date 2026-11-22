@@ -44,6 +44,11 @@ def test_frame_e_linear_ref() -> None:
     assert linear_ref((-7, 50), [(0, 0), (0, 100)]).offset_m == pytest.approx(-7)
 
 
+def test_frame_ida_e_volta() -> None:
+    lat, lon = F.to_latlon(*F.to_xy(-19.9, -43.9))
+    assert (lat, lon) == pytest.approx((-19.9, -43.9), abs=1e-9)
+
+
 def test_agrupa_luminarias_do_mesmo_poste() -> None:
     poles = group_poles([pt(1, 5, 0), pt(2, 5, 0), pt(3, 5, 30)])
     assert sorted(p.n_luminaires for p in poles) == [1, 2]

@@ -68,7 +68,7 @@ export default function MapaResultados({ capturas, revisoes, cadastro = [], sele
         const rev = revisoes[d.id] ?? "pendente";
         postes.features.push({
           type: "Feature",
-          properties: { id: d.id, captura: c.id, altura: d.alturaM ?? 0, score: d.score, rev },
+          properties: { id: d.id, captura: c.id, altura: d.alturaM ?? 0, score: d.score, rev, tri: !!d.triangulado },
           geometry: { type: "Point", coordinates: [d.lon, d.lat] },
         });
         raios.features.push({
@@ -144,8 +144,9 @@ export default function MapaResultados({ capturas, revisoes, cadastro = [], sele
             paint={{
               "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 2, 16, 4, 19, 8],
               "circle-color": ["match", ["get", "rev"], "confirmada", "#17A672", "rejeitada", "#DC5B52", "#E8A24D"],
-              "circle-stroke-color": "#1B3664",
-              "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 12, 0, 16, 1],
+              // Anel grosso = posição triangulada com fotos vizinhas.
+              "circle-stroke-color": ["case", ["get", "tri"], "#8B5CF6", "#1B3664"],
+              "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 12, ["case", ["get", "tri"], 1.5, 0], 16, ["case", ["get", "tri"], 3, 1]],
               "circle-opacity": ["match", ["get", "rev"], "rejeitada", 0.45, 0.95],
             }}
           />
@@ -203,6 +204,7 @@ function Legenda({ comCadastro }: { comCadastro: boolean }) {
     <ul className="absolute bottom-8 right-3 space-y-1 rounded-pi border border-borda bg-superficie/95 px-3 py-2 text-[0.75rem] text-texto-fraco shadow-card">
       {item("#1B3664", "Ponto de captura 360°", "#FFFFFF")}
       {item("#E8A24D", "Poste detectado (a revisar)")}
+      {item("#E8A24D", "Poste triangulado (2+ fotos)", "#8B5CF6")}
       {item("#17A672", "Poste confirmado")}
       {item("#DC5B52", "Poste rejeitado")}
       {comCadastro && item("#FFFFFF", "Poste do cadastro (BDGD)", "#0F7A53")}

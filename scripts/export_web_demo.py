@@ -45,6 +45,7 @@ from ipsurvey.domain.extraction.cross_section import cross_section
 from ipsurvey.domain.extraction.fusion import FusedField, fuse
 from ipsurvey.domain.extraction.road import estimate_road
 from ipsurvey.domain.extraction.street import StreetEstimate, assign_poles, street_estimate
+from ipsurvey.domain.geometry.triangulation import Ray, Triangulated, associate, triangulate
 
 EARTH_R = 6_371_008.8
 RAIO_M = 200.0  # entorno de cada captura para cadastro e mapa
@@ -85,6 +86,93 @@ def campo_json(f: FusedField) -> dict:
             {"fonte": c.source, "valor": c.value, "detalhe": c.detail} for c in f.candidates
         ],
     }
+
+
+def carregar_vizinhos(dataset: str) -> tuple[dict[str, list[dict]], Path]:
+    """Fotos vizinhas de cada captura (scripts/fetch_neighbors.py) e o cache do detector."""
+    p = ROOT / "benchmarks/golden" / f"{dataset}-vizinhos.yaml"
+    if not p.exists():
+        return {}, Path()
+    por_centro: dict[str, list[dict]] = {}
+    for v in load_manifest(f"{dataset}-vizinhos")["items"]:
+        por_centro.setdefault(v["vizinho_de"], []).append(v)
+    return por_centro, ROOT / "data/eval/owlv2" / f"{dataset}-vizinhos"
+
+
+def raios_de(
+    dets: list, frame_id: int, cam_xy: tuple[float, float], rumo_centro: float
+) -> list[Ray]:
+    """Postes de um quadro como raios no chão (rumo de mundo = rumo do centro + azimute)."""
+    return [
+        Ray(
+            frame=frame_id,
+            cam_x=cam_xy[0],
+            cam_y=cam_xy[1],
+            bearing=math.radians(rumo_centro) + d.az_center,
+            el_min=d.el_min,
+            el_max=d.el_max,
+            cut_top=d.cut_top,
+        )
+        for d in dets
+        if d.cls is StructureClass.POLE
+    ]
+
+
+def triangular_captura(  # noqa: PLR0913 (parâmetros do roteiro de exportação)
+    dets: list,
+    rumo_centro: float,
+    frente: float,
+    frame: LocalFrame,
+    *,
+    vizinhos: list[dict],
+    cache_viz: Path,
+    post: PostProcess,
+    args: argparse.Namespace,
+) -> dict[int, Triangulated]:
+    """Triangula os postes da captura com as fotos vizinhas.
+
+    O rumo do centro de cada vizinha é o rumo de deslocamento dela menos a frente do
+    veículo (a mesma da captura central: a câmera não se mexe no carro). A associação usa
+    a posição de quadro único como prévia; postes sem o pé visível ficam de fora.
+    """
+    quadros: list[list[Ray]] = []
+    for j, v in enumerate(vizinhos, start=1):
+        cp = cache_viz / (Path(v["file"]).stem + ".json")
+        if not cp.exists():
+            continue
+        dv = [
+            d
+            for d in angular_from_cache(json.loads(cp.read_text("utf-8")), post)
+            if not is_low_pole(d, args.camera_height, args.min_pole_height)
+        ]
+        desloc = (
+            v["rumo_ao_centro_deg"]
+            if v["deslocamento"] < 0
+            else (v["rumo_ao_centro_deg"] + 180) % 360
+        )
+        quadros.append(
+            raios_de(dv, j, frame.to_xy(v["lat"], v["lon"]), desloc - math.degrees(frente))
+        )
+    out: dict[int, Triangulated] = {}
+    if not quadros:
+        return out
+    for k, d in enumerate(dets):
+        if d.cls is not StructureClass.POLE:
+            continue
+        est = ground_estimate(d, args.camera_height)
+        if est is None:
+            continue
+        b = math.radians(rumo_centro) + d.az_center
+        prior = (est.distance_m * math.sin(b), est.distance_m * math.cos(b))
+        rays = raios_de([d], 0, (0.0, 0.0), rumo_centro)
+        for q in quadros:
+            r = associate(prior, q)
+            if r is not None:
+                rays.append(r)
+        t = triangulate(rays, args.camera_height)
+        if t is not None and 2.0 <= math.hypot(t.x, t.y) <= 60.0:
+            out[k] = t
+    return out
 
 
 def via_da_captura(
@@ -141,6 +229,8 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
 
     capturas: list[dict] = []
     postes_mapa: dict[str, dict] = {}
+    vizinhos_por_centro, cache_viz = carregar_vizinhos(args.dataset)
+    n_tri = 0
     for it in itens:
         cache = json.loads((cache_dir / (Path(it["file"]).stem + ".json")).read_text("utf-8"))
         dets = [
@@ -212,6 +302,40 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
                     else None,
                 }
             )
+        # ---- triangulação com as fotos vizinhas: substitui a estimativa de quadro único
+        tri = triangular_captura(
+            dets,
+            rumo_centro,
+            frente,
+            frame,
+            vizinhos_por_centro.get(it["id"], []),
+            cache_viz,
+            post,
+            args,
+        )
+        for k, t in tri.items():
+            dj = deteccoes[k]
+            la, lo = frame.to_latlon(t.x, t.y)
+            dj["unicoQuadro"] = {
+                "lat": dj["lat"],
+                "lon": dj["lon"],
+                "alturaM": dj["alturaM"],
+                "distanciaM": dj["distanciaM"],
+            }
+            dj.update(
+                lat=round(la, 7),
+                lon=round(lo, 7),
+                distanciaM=round(math.hypot(t.x, t.y), 2),
+                alturaM=round(t.height_m, 2) if t.height_m is not None else dj["alturaM"],
+                alturaMinima=t.height_is_lower_bound,
+                triangulado={
+                    "quadros": t.n_rays,
+                    "rmsM": round(t.rms_m, 2),
+                    "anguloDeg": round(math.degrees(t.spread_rad), 1),
+                },
+            )
+        n_tri += len(tri)
+
         # Casamento poste a poste (imagem × BDGD) fica de fora: no golden ele não supera o
         # acaso (GPS da câmera + estimativa de um quadro + coordenada esquemática da BDGD).
         # Volta com triangulação entre quadros e GNSS RTK. Ver docs/algorithms/fusao-fontes.md.
@@ -320,6 +444,7 @@ def main() -> None:  # noqa: PLR0915 (roteiro de exportação, linear de propós
     (out / "campanhas.json").write_text(json.dumps([resumo], ensure_ascii=False), "utf-8")
     print(f"{out}: {len(capturas)} capturas, {resumo['postes']} postes detectados")
     print(f"BDGD: {len(postes_mapa)} postes do cadastro no entorno das capturas")
+    print(f"Triangulação: {n_tri} postes com 2 ou mais quadros")
 
 
 if __name__ == "__main__":
