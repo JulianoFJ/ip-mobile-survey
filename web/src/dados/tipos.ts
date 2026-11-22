@@ -35,6 +35,10 @@ export interface Deteccao {
   lon: number | null;
   /** Posição no chão em relação à câmera (x à direita, y à frente do deslocamento). */
   planta: { x: number; y: number; lado: "esquerda" | "direita" | "centro" } | null;
+  /** Presente quando a posição e a altura vieram da triangulação com fotos vizinhas. */
+  triangulado?: { quadros: number; rmsM: number; anguloDeg: number };
+  /** Estimativa de quadro único, guardada quando a triangulação a substituiu. */
+  unicoQuadro?: { lat: number | null; lon: number | null; alturaM: number | null; distanciaM: number | null };
 }
 
 /** Situação de um campo da planilha de simulação. */

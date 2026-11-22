@@ -192,7 +192,9 @@ function TelaRevisao({ campanha }: { campanha: Campanha }) {
                         <span className="block text-[0.76rem] text-texto-fraco num">
                           {d.classe === "poste"
                             ? d.alturaM != null
-                              ? `${d.alturaMinima ? "≥ " : ""}${fmt.m(d.alturaM)} de altura · a ${fmt.m(d.distanciaM, 0)}`
+                              ? `${d.alturaMinima ? "≥ " : ""}${fmt.m(d.alturaM)} de altura · a ${fmt.m(d.distanciaM, 0)}${
+                                  d.triangulado ? ` · triangulado em ${d.triangulado.quadros} fotos` : ""
+                                }`
                               : "pé não visível: sem altura"
                             : `azimute ${Math.round((d.az * 180) / Math.PI)}°`}
                         </span>

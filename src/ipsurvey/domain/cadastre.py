@@ -85,6 +85,14 @@ class LocalFrame:
             math.radians(lat - self.lat0) * EARTH_R,
         )
 
+    def to_latlon(self, x: float, y: float) -> tuple[float, float]:
+        """Metros em torno da origem → graus (inversa de `to_xy`)."""
+        k = math.cos(math.radians(self.lat0))
+        return (
+            self.lat0 + math.degrees(y / EARTH_R),
+            self.lon0 + math.degrees(x / (EARTH_R * k)),
+        )
+
 
 @dataclass(frozen=True, slots=True)
 class LinearRef:
