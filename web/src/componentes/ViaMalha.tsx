@@ -1,7 +1,10 @@
 "use client";
 
+import { useRef, useState, type PointerEvent as RPointerEvent } from "react";
 import { fmt } from "@/dados/geometria";
-import { FONTES, type Captura, type CampoVia, type Revisao } from "@/dados/tipos";
+import { aplicarCorrecao, useCorrecoesLargura, type CorrecaoLargura } from "@/dados/revisao";
+import { FONTES, type Captura, type CampoVia, type Revisao, type ViaMalha as TViaMalha } from "@/dados/tipos";
+import { Botao } from "@/ui/Botao";
 import { Balao } from "@/ui/Ajuda";
 import { Icone } from "@/ui/Icone";
 import { cn } from "@/ui/lib/cn";
@@ -13,12 +16,39 @@ const GRUPOS: { titulo: string; icone: string; colunas: string[] }[] = [
   { titulo: "Luminária", icone: "lightbulb", colunas: ["AG", "AL", "AJ", "AH", "AM"] },
 ];
 
-/** Atributos de via e malha de um panorama, com a planta vista de cima. */
-export function ViaMalha({ captura, revisoes }: { captura: Captura; revisoes: Record<string, Revisao> }) {
+type Corte = NonNullable<TViaMalha["corte"]>;
+
+const r1 = (x: number | null | undefined) => (x == null ? null : Math.round(x * 10) / 10);
+
+function rascunhoDe(c: Captura): CorrecaoLargura {
+  const k = c.via.corte;
+  return {
+    meioFioEsquerdaM: r1(k?.meioFioEsquerdaM) ?? 3,
+    meioFioDireitaM: r1(k?.meioFioDireitaM) ?? 3,
+    passeioEsquerdaM: r1(k?.passeioEsquerdaM),
+    passeioDireitaM: r1(k?.passeioDireitaM),
+    canteiroM: r1(k?.canteiroM),
+    pista2M: r1(k?.pista2M),
+    revisadoEm: new Date().toISOString(),
+  };
+}
+
+/** Atributos de via e malha de um panorama, com a planta vista de cima e a correção de larguras. */
+export function ViaMalha({ campanhaId, captura: original, revisoes }: {
+  campanhaId: string;
+  captura: Captura;
+  revisoes: Record<string, Revisao>;
+}) {
+  const { correcoes, corrigir } = useCorrecoesLargura(campanhaId);
+  const correcao = correcoes[original.id];
+  const [rascunho, setRascunho] = useState<CorrecaoLargura | null>(null);
+  const captura = aplicarCorrecao(original, rascunho ?? correcao);
   const porColuna = new Map(captura.via.campos.map((c) => [c.coluna, c]));
   const estimados = captura.via.campos.filter((c) => c.estado === "estimado").length;
   const divergentes = captura.via.campos.filter((c) => c.divergente).length;
   const v = captura.via;
+  const editar = (k: keyof CorrecaoLargura, val: number | null) =>
+    setRascunho((r) => (r ? { ...r, [k]: val == null ? null : Math.max(0, Math.round(val * 10) / 10) } : r));
   return (
     <div className="space-y-4">
       <div className="rounded-pi border border-borda p-3 text-[0.84rem]">
@@ -34,7 +64,61 @@ export function ViaMalha({ captura, revisoes }: { captura: Captura; revisoes: Re
             .join(" · ")}
         </p>
       </div>
-      <PlantaVia captura={captura} revisoes={revisoes} />
+      <PlantaVia
+        captura={captura}
+        revisoes={revisoes}
+        editando={rascunho != null}
+        aoArrastar={(lado, m) => editar(lado === "esquerda" ? "meioFioEsquerdaM" : "meioFioDireitaM", m)}
+      />
+      {rascunho ? (
+        <div className="space-y-3 rounded-pi border border-destaque/40 bg-destaque/5 p-3">
+          <p className="text-[0.8rem] text-texto">
+            <strong>Corrigindo larguras.</strong> Arraste as linhas de meio-fio na planta ou digite os valores (metros, a partir do eixo do
+            carro para o meio-fio).
+          </p>
+          <div className="grid grid-cols-2 gap-2 text-[0.8rem]">
+            <CampoNum rotulo="Meio-fio esquerdo" valor={rascunho.meioFioEsquerdaM} aoMudar={(x) => editar("meioFioEsquerdaM", x)} />
+            <CampoNum rotulo="Meio-fio direito" valor={rascunho.meioFioDireitaM} aoMudar={(x) => editar("meioFioDireitaM", x)} />
+            <CampoNum rotulo="Passeio esquerdo (S)" valor={rascunho.passeioEsquerdaM} aoMudar={(x) => editar("passeioEsquerdaM", x)} />
+            <CampoNum rotulo="Passeio direito (X)" valor={rascunho.passeioDireitaM} aoMudar={(x) => editar("passeioDireitaM", x)} />
+            <CampoNum rotulo="Canteiro (Y)" valor={rascunho.canteiroM} aoMudar={(x) => editar("canteiroM", x)} />
+            <CampoNum rotulo="Via 2 (W)" valor={rascunho.pista2M} aoMudar={(x) => editar("pista2M", x)} />
+          </div>
+          <p className="text-[0.8rem] font-semibold text-navy num">
+            Largura da via 1 (T): {fmt.m((rascunho.meioFioEsquerdaM ?? 0) + (rascunho.meioFioDireitaM ?? 0))}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Botao
+              variante="primario"
+              tamanho="compacto"
+              icone="check"
+              onClick={() => {
+                corrigir(original.id, { ...rascunho, revisadoEm: new Date().toISOString() });
+                setRascunho(null);
+              }}
+            >
+              Salvar correção
+            </Botao>
+            <Botao variante="secundario" tamanho="compacto" onClick={() => setRascunho(null)}>
+              Descartar
+            </Botao>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-wrap items-center gap-2">
+          <Botao variante="secundario" tamanho="compacto" icone="edit_square" onClick={() => setRascunho(correcao ? { ...correcao } : rascunhoDe(original))}>
+            Corrigir larguras
+          </Botao>
+          {correcao && (
+            <>
+              <span className="text-[0.76rem] text-destaque">Corrigido em {new Date(correcao.revisadoEm).toLocaleDateString("pt-BR")}</span>
+              <Botao variante="terciario" tamanho="compacto" icone="undo" onClick={() => corrigir(original.id, null)}>
+                Voltar ao medido
+              </Botao>
+            </>
+          )}
+        </div>
+      )}
       <p className="text-[0.8rem] text-texto-fraco">
         {estimados} de {captura.via.campos.length} campos estimados
         {divergentes > 0 && <>, {divergentes} com fontes divergentes</>}. Passe o mouse num campo para ver a fonte e os outros valores.
@@ -54,6 +138,23 @@ export function ViaMalha({ captura, revisoes }: { captura: Captura; revisoes: Re
         </section>
       ))}
     </div>
+  );
+}
+
+function CampoNum({ rotulo, valor, aoMudar }: { rotulo: string; valor: number | null; aoMudar: (v: number | null) => void }) {
+  return (
+    <label className="block">
+      <span className="text-texto-fraco">{rotulo}</span>
+      <input
+        type="number"
+        step={0.1}
+        min={0}
+        value={valor ?? ""}
+        placeholder="—"
+        onChange={(e) => aoMudar(e.target.value === "" ? null : Number(e.target.value))}
+        className="mt-0.5 h-8 w-full rounded-pi border border-borda-campo bg-superficie px-2 text-right num"
+      />
+    </label>
   );
 }
 
@@ -90,7 +191,12 @@ function LinhaCampo({ campo }: { campo: CampoVia }) {
           )}
           {campo.divergente && <Icone nome="warning" tamanho={16} cheio className="text-atencao" rotulo="Fontes divergentes" />}
           {fonte ? (
-            <Icone nome={fonte.icone} tamanho={16} className={campo.fonte === "cadastro" ? "text-sucesso" : campo.fonte === "mapa" ? "text-navy" : "text-acao-texto"} rotulo={fonte.rotulo} />
+            <Icone
+              nome={fonte.icone}
+              tamanho={16}
+              className={campo.fonte === "cadastro" ? "text-sucesso" : campo.fonte === "mapa" ? "text-navy" : campo.fonte === "revisao" ? "text-destaque" : "text-acao-texto"}
+              rotulo={fonte.rotulo}
+            />
           ) : (
             <Icone nome="schedule" tamanho={16} className="text-texto-suave" />
           )}
@@ -106,6 +212,7 @@ function LegendaFontes() {
       <span className="flex items-center gap-1"><Icone nome={FONTES.imagem.icone} tamanho={14} className="text-acao-texto" /> imagem 360°</span>
       <span className="flex items-center gap-1"><Icone nome={FONTES.cadastro.icone} tamanho={14} className="text-sucesso" /> cadastro BDGD</span>
       <span className="flex items-center gap-1"><Icone nome={FONTES.mapa.icone} tamanho={14} className="text-navy" /> mapa OSM</span>
+      <span className="flex items-center gap-1"><Icone nome={FONTES.revisao.icone} tamanho={14} className="text-destaque" /> revisão</span>
       <span className="flex items-center gap-1"><Icone nome="warning" tamanho={14} cheio className="text-atencao" /> fontes divergem</span>
       <span className="flex items-center gap-1"><Icone nome="schedule" tamanho={14} /> pendente</span>
     </p>
@@ -116,7 +223,14 @@ function LegendaFontes() {
  * Planta vista de cima: câmera na origem, deslocamento para cima. Cada poste com o pé
  * visível aparece na posição estimada pelo plano do chão.
  */
-function PlantaVia({ captura, revisoes }: { captura: Captura; revisoes: Record<string, Revisao> }) {
+function PlantaVia({ captura, revisoes, editando, aoArrastar }: {
+  captura: Captura;
+  revisoes: Record<string, Revisao>;
+  editando?: boolean;
+  aoArrastar?: (lado: "esquerda" | "direita", metros: number) => void;
+}) {
+  const svg = useRef<SVGSVGElement>(null);
+  const [arrastando, setArrastando] = useState<"esquerda" | "direita" | null>(null);
   const W = 300;
   const H = 300;
   const ESC = 3.4; // px por metro
@@ -131,10 +245,28 @@ function PlantaVia({ captura, revisoes }: { captura: Captura; revisoes: Record<s
   const alin = captura.via.larguraAlinhamentosM;
   const vao = captura.via.campos.find((c) => c.coluna === "AF");
   const cor = { esquerda: "#0EA5E9", direita: "#E8A24D", centro: "#8B5CF6" } as const;
+  const mover = (e: RPointerEvent<SVGSVGElement>) => {
+    if (!arrastando || !svg.current) return;
+    const m = svg.current.getScreenCTM();
+    if (!m) return;
+    const x = (e.clientX - m.e) / m.a; // px do viewBox
+    const metros = (x - cx) / ESC;
+    aoArrastar?.(arrastando, arrastando === "esquerda" ? Math.max(0.5, -metros) : Math.max(0.5, metros));
+  };
+  const corteAtual: Corte | null = captura.via.corte;
 
   return (
     <figure className="rounded-pi border border-borda bg-superficie-alt p-2">
-      <svg viewBox={`0 0 ${W} ${H}`} className="mx-auto block w-full max-w-[320px]" role="img" aria-label="Planta da via vista de cima com os postes estimados">
+      <svg
+        ref={svg}
+        viewBox={`0 0 ${W} ${H}`}
+        className={cn("mx-auto block w-full max-w-[320px] touch-none", arrastando && "cursor-ew-resize")}
+        role="img"
+        aria-label="Planta da via vista de cima com os postes estimados"
+        onPointerMove={mover}
+        onPointerUp={() => setArrastando(null)}
+        onPointerLeave={() => setArrastando(null)}
+      >
         {/* grade de 10 m */}
         {Array.from({ length: 9 }, (_, i) => (i - 4) * 10).map((m) => (
           <g key={m} className="text-borda-forte">
@@ -150,7 +282,7 @@ function PlantaVia({ captura, revisoes }: { captura: Captura; revisoes: Record<s
         ))}
         {/* corte transversal medido: pista, passeios e canteiro como faixas ao longo do quadro */}
         {(() => {
-          const c = captura.via.corte;
+          const c = corteAtual;
           if (!c) return null;
           const faixa = (x0: number, x1: number, cor: string, k: string) => {
             const [a] = P(Math.min(x0, x1), 0);
@@ -171,10 +303,26 @@ function PlantaVia({ captura, revisoes }: { captura: Captura; revisoes: Record<s
               if (c.pista2M) els.push(faixa(s * (borda + c.canteiroM), s * (borda + c.canteiroM + c.pista2M), "#E66E9640", "p2"));
             }
           }
-          for (const [x, k] of [[L != null ? -L : null, "ml"], [R, "mr"]] as const) {
+          for (const [x, k, lado] of [[L != null ? -L : null, "ml", "esquerda"], [R, "mr", "direita"]] as const) {
             if (x == null) continue;
             const [px] = P(x, 0);
-            els.push(<line key={k} x1={px} x2={px} y1={0} y2={H} stroke="#B4285A" strokeWidth={1.2} />);
+            els.push(<line key={k} x1={px} x2={px} y1={0} y2={H} stroke={editando ? "#8B5CF6" : "#B4285A"} strokeWidth={editando ? 2 : 1.2} />);
+            if (editando) {
+              els.push(
+                <g
+                  key={`${k}-alca`}
+                  className="cursor-ew-resize"
+                  onPointerDown={(e) => {
+                    (e.target as Element).setPointerCapture?.(e.pointerId);
+                    setArrastando(lado);
+                  }}
+                >
+                  <rect x={px - 8} y={0} width={16} height={H} fill="transparent" />
+                  <rect x={px - 6} y={8} width={12} height={20} rx={3} fill="#8B5CF6" />
+                  <text x={px} y={22} textAnchor="middle" fontSize={9} fill="#fff" fontWeight={700}>↔</text>
+                </g>,
+              );
+            }
           }
           return <g>{els}</g>;
         })()}

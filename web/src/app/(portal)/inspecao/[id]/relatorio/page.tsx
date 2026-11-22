@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import type { ReactNode } from "react";
 import { CabecalhoCampanha, ComCampanha } from "@/componentes/Campanha";
 import { contarPorClasse, fmt, histogramaAlturas, mediana } from "@/dados/geometria";
-import { useRevisoes } from "@/dados/revisao";
+import { useCapturasRevisadas, useRevisoes } from "@/dados/revisao";
 import { CLASSES, type Campanha, type Classe } from "@/dados/tipos";
 import { TabelaVias } from "@/componentes/TabelaVias";
 import { Botao } from "@/ui/Botao";
@@ -16,6 +16,7 @@ export default function PaginaRelatorio() {
 
 function Relatorio({ campanha }: { campanha: Campanha }) {
   const { mapa: revisoes } = useRevisoes(campanha.id);
+  const capsRevisadas = useCapturasRevisadas(campanha.id, campanha.capturas);
   const todas = campanha.capturas.flatMap((c) => c.deteccoes);
   const n = contarPorClasse(todas);
   const postes = campanha.capturas.flatMap((c) =>
@@ -142,7 +143,7 @@ function Relatorio({ campanha }: { campanha: Campanha }) {
             braço, o cadastro {campanha.fontesCadastro ? `(${campanha.fontesCadastro})` : ""} para vão, posteação e lâmpadas por ponto, e o mapa
             (OpenStreetMap) para faixas e logradouro. Larguras ainda pendentes.
           </p>
-          <TabelaVias capturas={campanha.capturas} impressao />
+          <TabelaVias capturas={capsRevisadas} impressao />
         </Secao>
 
         <Secao n={5} titulo="Método">

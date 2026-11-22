@@ -29,6 +29,7 @@ const COR_FONTE: Record<Fonte, string> = {
   imagem: "text-acao-texto",
   cadastro: "text-sucesso",
   mapa: "text-navy",
+  revisao: "text-destaque",
 };
 
 function campo(c: Captura, col: string): CampoVia | undefined {

@@ -7,7 +7,7 @@ import { useMemo, useState } from "react";
 import { CabecalhoCampanha, Carregando, ComCampanha } from "@/componentes/Campanha";
 import { urlPublica } from "@/dados/api";
 import { contarPorClasse, fmt, mediana } from "@/dados/geometria";
-import { useRevisoes } from "@/dados/revisao";
+import { useCapturasRevisadas, useRevisoes } from "@/dados/revisao";
 import { CLASSES, type Campanha, type Classe } from "@/dados/tipos";
 import { Botao } from "@/ui/Botao";
 import { ResumoMedidas, TabelaVias, ValorCampo } from "@/componentes/TabelaVias";
@@ -32,14 +32,16 @@ function Painel({ campanha }: { campanha: Campanha }) {
   const [cidade, setCidade] = useState<string>("");
 
   const cidades = useMemo(() => [...new Set(campanha.capturas.map((c) => c.cidade))].sort(), [campanha]);
-  const capturas = useMemo(() => campanha.capturas.filter((c) => !cidade || c.cidade === cidade), [campanha, cidade]);
+  // Larguras corrigidas na revisão valem em todo o painel.
+  const capsRevisadas = useCapturasRevisadas(campanha.id, campanha.capturas);
+  const capturas = useMemo(() => capsRevisadas.filter((c) => !cidade || c.cidade === cidade), [capsRevisadas, cidade]);
   const todas = capturas.flatMap((c) => c.deteccoes);
   const n = contarPorClasse(todas);
   const alturas = todas.filter((d) => d.classe === "poste" && d.alturaM != null && !d.alturaMinima).map((d) => d.alturaM as number);
   const comPosicao = todas.filter((d) => d.classe === "poste" && d.lat != null).length;
   const revisadas = todas.filter((d) => revisoes[d.id]).length;
   const confirmadas = todas.filter((d) => revisoes[d.id] === "confirmada").length;
-  const sel = campanha.capturas.find((c) => c.id === selecionada) ?? null;
+  const sel = capsRevisadas.find((c) => c.id === selecionada) ?? null;
   const base = `/inspecao/${encodeURIComponent(campanha.id)}`;
 
   return (
